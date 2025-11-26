@@ -12,64 +12,35 @@
     <div class="bg-container">
         <div class="bg-gradient"></div>
         <div class="grid-overlay"></div>
-        <div class="scanlines"></div>
         <div class="particles" id="particles"></div>
     </div>
 
     <div class="app-wrapper">
         <div class="container">
-            <!-- Header -->
             <div class="header">
                 <h1>🎮 TOADZ ARENA</h1>
                 <div class="tagline">💰 Play • Earn • Dominate</div>
             </div>
-
-            <!-- Wallet Stats Banner (hidden until connected) -->
+            
             <div id="walletBanner" class="fomo-banner" style="display: none;">
                 <div class="fomo-content">
-                    <div class="fomo-stat">
-                        <div class="fomo-value blue"><span id="walletAddrBanner"></span></div>
-                        <div class="fomo-label">Wallet</div>
-                    </div>
-                    <div class="fomo-stat">
-                        <div class="fomo-value gold"><span id="walletBalBanner">0</span></div>
-                        <div class="fomo-label">Your POND</div>
-                    </div>
-                    <div class="fomo-stat">
-                        <div class="fomo-value green"><span id="walletSGBBanner">0</span></div>
-                        <div class="fomo-label">Your SGB</div>
-                    </div>
-                    <div class="fomo-stat">
-                        <div class="fomo-value purple"><span id="marketcapBanner">$0</span></div>
-                        <div class="fomo-label">POND MCAP</div>
-                    </div>
-                    <div class="fomo-stat">
-                        <div class="fomo-value"><span id="gameCredits">0</span></div>
-                        <div class="fomo-label">Game Credits</div>
-                    </div>
+                    <div class="fomo-stat"><div class="fomo-value blue"><span id="walletAddrBanner"></span></div><div class="fomo-label">Wallet</div></div>
+                    <div class="fomo-stat"><div class="fomo-value gold"><span id="walletBalBanner">0</span></div><div class="fomo-label">Your POND</div></div>
+                    <div class="fomo-stat"><div class="fomo-value" style="color: var(--accent-green);"><span id="walletSGBBanner">0</span></div><div class="fomo-label">Your SGB</div></div>
+                    <div class="fomo-stat"><div class="fomo-value purple"><span id="marketcapBanner">$0</span></div><div class="fomo-label">POND MCAP</div></div>
+                    <div class="fomo-stat"><div class="fomo-value" style="color: var(--accent-primary);"><span id="gameCredits">0</span></div><div class="fomo-label">Game Credits</div></div>
                 </div>
             </div>
-
-            <!-- LP Stats Banner -->
+            
             <div id="lpBanner" class="fomo-banner">
                 <div class="fomo-content">
                     <div class="banner-title">POND LP STATS</div>
-                    <div class="fomo-stat">
-                        <div class="price-ticker">$<span id="pondPriceUSD">0.000084</span></div>
-                        <div class="fomo-label">POND Price</div>
-                    </div>
-                    <div class="fomo-stat">
-                        <div class="fomo-value purple">$<span id="marketcapLP">0</span></div>
-                        <div class="fomo-label">Market Cap</div>
-                    </div>
-                    <div class="fomo-stat">
-                        <div class="fomo-value green"><span id="priceChangePercent">+0.00</span>%</div>
-                        <div class="fomo-label">24h Change</div>
-                    </div>
+                    <div class="fomo-stat"><div class="price-ticker">$<span id="pondPriceUSD">0.000084</span></div><div class="fomo-label">POND Price</div></div>
+                    <div class="fomo-stat"><div class="fomo-value purple">$<span id="marketcapLP">0</span></div><div class="fomo-label">Market Cap</div></div>
+                    <div class="fomo-stat"><div class="fomo-value" style="color: var(--accent-green);"><span id="priceChangePercent">+0.00</span>%</div><div class="fomo-label">24h Change</div></div>
                 </div>
             </div>
-
-            <!-- Navigation Tabs -->
+            
             <div class="tabs">
                 <button class="tab active" onclick="switchTab('play')">🎮 PLAY</button>
                 <button class="tab" onclick="switchTab('buy')">💰 BUY POND</button>
@@ -78,32 +49,23 @@
                 <button class="tab marketplace-tab" onclick="switchTab('marketplace')">✨ MARKETPLACE</button>
             </div>
 
-            <!-- ==================== PLAY TAB ==================== -->
+            <!-- PLAY TAB -->
             <div id="playTab" class="tab-content active">
-                <!-- Wallet Connect Buttons -->
                 <div class="flex flex-center flex-wrap gap-2 mb-3">
                     <button id="walletBtn" class="btn btn-primary" onclick="connectWallet()">🔗 Connect Wallet</button>
                     <button id="networkBtn" class="btn btn-orange" onclick="addSongbirdNetwork()" style="display: none;">🌐 Add Songbird</button>
                     <button id="importTokenBtn" class="btn btn-green" onclick="importBAKEToken()" style="display: none;">➕ Add $POND</button>
                 </div>
-
-                <!-- Game Setup Section -->
+                
                 <div id="gameSetup" style="display: none;">
-                    <div class="cyber-card green glow">
-                        <div class="corner tl"></div>
-                        <div class="corner tr"></div>
-                        <div class="corner bl"></div>
-                        <div class="corner br"></div>
-                        
-                        <h3 class="section-title">🎟️ GAME CREDITS: <span id="creditsDisplay">0</span></h3>
-                        
+                    <div class="cyber-card green mb-3">
+                        <h3 class="section-title" style="color: var(--accent-green);">🎟️ GAME CREDITS: <span id="creditsDisplay">0</span></h3>
                         <div class="text-center mb-3">
                             <input type="text" id="username" class="cyber-input centered uppercase" placeholder="ENTER USERNAME" maxlength="8" style="max-width: 320px;">
                         </div>
-                        
                         <div class="form-group text-center">
                             <div class="form-label">Buy Credits (1 SGB each)</div>
-                            <div class="flex flex-center flex-wrap gap-2 mt-2" id="creditsGrid">
+                            <div class="flex flex-center flex-wrap gap-2 mt-2">
                                 <button class="btn btn-green btn-sm" onclick="buyCredits(1)">Buy 1</button>
                                 <button class="btn btn-green btn-sm" onclick="buyCredits(5)">Buy 5</button>
                                 <button class="btn btn-green btn-sm" onclick="buyCredits(10)">Buy 10</button>
@@ -111,17 +73,15 @@
                                 <button class="btn btn-gold btn-sm" onclick="buyCredits(100)">Buy 100</button>
                             </div>
                         </div>
-                        
                         <div class="text-center mt-3">
                             <button id="payEntryBtn" class="btn btn-primary btn-lg" onclick="selectVehicle()">🎮 USE CREDIT & CHOOSE VEHICLE</button>
                         </div>
                     </div>
                 </div>
-
-                <!-- Vehicle Selection -->
+                
                 <div id="vehicleSelect" style="display: none;">
                     <h3 class="section-title blue">CHOOSE YOUR VEHICLE</h3>
-                    <div class="grid-3 grid-auto-sm mb-3">
+                    <div class="grid-3 mb-3">
                         <div class="vehicle-card" onclick="selectVehicleType('🚜', 230, 40)">
                             <span class="vehicle-icon">🚜</span>
                             <div class="vehicle-name">Tank</div>
@@ -139,24 +99,21 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Marketplace Upsell -->
+                
                 <div id="marketplaceUpsell" style="display: none;">
                     <h3 class="section-title pink">⚡ NEED ANYTHING FROM THE MARKETPLACE?</h3>
                     <div id="upsellItems" class="grid-auto mb-3"></div>
                     <div class="flex flex-center gap-2">
                         <button class="btn btn-pink" onclick="switchTab('marketplace')">🛒 Browse Marketplace</button>
-                        <button class="btn btn-primary btn-lg" onclick="proceedToGame()">▶️ START GAME</button>
+                        <button class="btn btn-primary btn-lg" onclick="proceedToGame()">▶️ Continue to Game</button>
                     </div>
                 </div>
-
-                <!-- Game Area -->
+                
                 <div id="gameArea" style="display: none;">
                     <div id="gameContainer">
                         <canvas id="gameCanvas"></canvas>
                         <div id="explosionOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; background: radial-gradient(circle, rgba(255,100,0,0.6) 0%, rgba(255,0,0,0.3) 50%, transparent 100%);"></div>
                         
-                        <!-- Prize Pot -->
                         <div style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%);">
                             <div class="prize-pot">
                                 <div class="prize-pot-label">💰 PRIZE POT</div>
@@ -164,10 +121,8 @@
                             </div>
                         </div>
                         
-                        <!-- Kill Notification -->
                         <div id="killNotif" class="kill-notif" style="position: absolute; top: 120px; left: 50%; transform: translateX(-50%); display: none;"></div>
                         
-                        <!-- Left HUD -->
                         <div style="position: absolute; top: 20px; left: 20px;">
                             <div class="hud-panel">
                                 <div class="hud-stat red">❤️ <span id="playerHP">100</span>/<span id="playerMaxHP">100</span></div>
@@ -179,7 +134,6 @@
                             </div>
                         </div>
                         
-                        <!-- Right HUD -->
                         <div style="position: absolute; top: 20px; right: 20px;">
                             <div class="hud-panel text-right">
                                 <div class="hud-stat cyan">🎮 <span id="playerName">Player</span></div>
@@ -189,7 +143,6 @@
                             </div>
                         </div>
                         
-                        <!-- Sarah Panel -->
                         <div style="position: absolute; bottom: 0; left: 0; right: 0;">
                             <div class="sarah-panel">
                                 <div class="sarah-icon">💁‍♀️</div>
@@ -203,325 +156,148 @@
                 </div>
             </div>
 
-            <!-- ==================== BUY POND TAB ==================== -->
+            <!-- BUY TAB -->
             <div id="buyTab" class="tab-content">
                 <h2 class="section-title gold">💰 Bulk POND Packages</h2>
-                
-                <!-- Wallet Warning -->
                 <div id="buyWalletWarning" class="alert warning">
                     <div class="alert-icon">⚠️</div>
                     <div class="alert-content">
                         <div class="alert-title">Connect Wallet to Purchase</div>
                         <div class="alert-text">You need to connect your wallet first</div>
                     </div>
-                    <button class="btn btn-primary" onclick="connectWallet(); switchTab('play');">🔗 Connect Wallet</button>
+                    <button class="btn btn-primary" onclick="connectWallet(); switchTab('play');">🔗 Connect</button>
                 </div>
-                
-                <!-- Bulk Purchase Section -->
                 <div id="bulkPurchaseSection" style="display: none;">
                     <div class="grid-auto-lg mb-3">
-                        <!-- Starter Package -->
                         <div class="cyber-card package-card">
-                            <div class="corner tl"></div>
-                            <div class="corner tr"></div>
-                            <div class="corner bl"></div>
-                            <div class="corner br"></div>
-                            <div class="package-tier">Starter</div>
+                            <div class="package-tier">STARTER</div>
                             <div class="package-price">$500</div>
                             <div class="package-discount">2% Discount</div>
-                            <div class="package-detail">
-                                <div class="package-detail-label">You pay</div>
-                                <div class="package-detail-value" id="pkg500Sgb">~250,000 SGB</div>
-                            </div>
-                            <div class="package-detail">
-                                <div class="package-detail-label">You receive (+2%)</div>
-                                <div class="package-detail-value gold" id="pkg500Bake">Loading...</div>
-                            </div>
-                            <button class="btn btn-blue btn-block" onclick="buyPackage(500, 2)">BUY $500 PACKAGE</button>
+                            <div class="package-detail"><div class="package-detail-label">You pay</div><div class="package-detail-value" id="pkg500Sgb">~250,000 SGB</div></div>
+                            <div class="package-detail" style="background: rgba(251, 191, 36, 0.15);"><div class="package-detail-label">You receive (+2%)</div><div class="package-detail-value" style="color: var(--accent-gold);" id="pkg500Bake">Loading...</div></div>
+                            <button class="btn btn-blue" style="width: 100%;" onclick="buyPackage(500, 2)">BUY $500 PACKAGE</button>
                         </div>
-                        
-                        <!-- Builder Package -->
                         <div class="cyber-card package-card featured">
                             <div class="package-badge">Popular</div>
-                            <div class="corner tl"></div>
-                            <div class="corner tr"></div>
-                            <div class="corner bl"></div>
-                            <div class="corner br"></div>
-                            <div class="package-tier">Builder</div>
+                            <div class="package-tier">BUILDER</div>
                             <div class="package-price">$1,000</div>
                             <div class="package-discount">5% Discount</div>
-                            <div class="package-detail">
-                                <div class="package-detail-label">You pay</div>
-                                <div class="package-detail-value" id="pkg1000Sgb">~500,000 SGB</div>
-                            </div>
-                            <div class="package-detail">
-                                <div class="package-detail-label">You receive (+5%)</div>
-                                <div class="package-detail-value gold" id="pkg1000Bake">Loading...</div>
-                            </div>
-                            <button class="btn btn-gold btn-block" onclick="buyPackage(1000, 5)">BUY $1,000 PACKAGE</button>
+                            <div class="package-detail"><div class="package-detail-label">You pay</div><div class="package-detail-value" id="pkg1000Sgb">~500,000 SGB</div></div>
+                            <div class="package-detail" style="background: rgba(251, 191, 36, 0.15);"><div class="package-detail-label">You receive (+5%)</div><div class="package-detail-value" style="color: var(--accent-gold);" id="pkg1000Bake">Loading...</div></div>
+                            <button class="btn btn-gold" style="width: 100%;" onclick="buyPackage(1000, 5)">BUY $1,000 PACKAGE</button>
                         </div>
-                        
-                        <!-- Whale Package -->
                         <div class="cyber-card package-card">
                             <div class="package-badge purple">Whale</div>
-                            <div class="corner tl"></div>
-                            <div class="corner tr"></div>
-                            <div class="corner bl"></div>
-                            <div class="corner br"></div>
-                            <div class="package-tier">Believer</div>
+                            <div class="package-tier">BELIEVER</div>
                             <div class="package-price">$5,000</div>
                             <div class="package-discount">10% Discount</div>
-                            <div class="package-detail">
-                                <div class="package-detail-label">You pay</div>
-                                <div class="package-detail-value" id="pkg5000Sgb">~2,500,000 SGB</div>
-                            </div>
-                            <div class="package-detail">
-                                <div class="package-detail-label">You receive (+10%)</div>
-                                <div class="package-detail-value gold" id="pkg5000Bake">Loading...</div>
-                            </div>
-                            <button class="btn btn-purple btn-block" onclick="buyPackage(5000, 10)">BUY $5,000 PACKAGE</button>
+                            <div class="package-detail"><div class="package-detail-label">You pay</div><div class="package-detail-value" id="pkg5000Sgb">~2,500,000 SGB</div></div>
+                            <div class="package-detail" style="background: rgba(251, 191, 36, 0.15);"><div class="package-detail-label">You receive (+10%)</div><div class="package-detail-value" style="color: var(--accent-gold);" id="pkg5000Bake">Loading...</div></div>
+                            <button class="btn btn-purple" style="width: 100%;" onclick="buyPackage(5000, 10)">BUY $5,000 PACKAGE</button>
                         </div>
                     </div>
-                    
-                    <!-- Vesting Status -->
                     <div id="vestStatus" class="cyber-card purple" style="display: none;">
-                        <div class="corner tl"></div>
-                        <div class="corner tr"></div>
-                        <div class="corner bl"></div>
-                        <div class="corner br"></div>
-                        <h3 class="section-title" style="color: var(--accent-purple);">🔒 Your Vesting POND</h3>
+                        <h3 class="section-title purple">🔒 Your Vesting POND</h3>
                         <div class="grid-2 mb-2">
-                            <div class="stat-box">
-                                <div class="stat-box-label">Total Purchased</div>
-                                <div class="stat-box-value gold" id="vestTotal">0</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-box-label">Already Claimed</div>
-                                <div class="stat-box-value" style="color: var(--text-muted);" id="vestClaimed">0</div>
-                            </div>
+                            <div class="stat-box"><div class="stat-box-label">Total Purchased</div><div class="stat-box-value gold" id="vestTotal">0</div></div>
+                            <div class="stat-box"><div class="stat-box-label">Already Claimed</div><div class="stat-box-value" style="color: var(--text-muted);" id="vestClaimed">0</div></div>
                         </div>
                         <div class="stat-box mb-2" style="background: rgba(16, 185, 129, 0.15);">
                             <div class="stat-box-label">Claimable Now</div>
                             <div class="stat-box-value green" id="vestClaimable">0 POND</div>
                             <div style="font-size: 11px; color: var(--accent-orange); margin-top: 4px;" id="vestTimeRemaining">60 days remaining</div>
                         </div>
-                        <button class="btn btn-purple btn-block" onclick="claimBulkBAKE()">🎁 CLAIM VESTED POND</button>
+                        <button class="btn btn-purple" style="width: 100%;" onclick="claimBulkBAKE()">🎁 CLAIM VESTED POND</button>
                     </div>
                 </div>
             </div>
 
-            <!-- ==================== POOL TAB ==================== -->
+            <!-- POOL TAB -->
             <div id="poolTab" class="tab-content">
-                <h2 class="section-title">💧 POND/SGB Liquidity Pool</h2>
-                
-                <!-- Pool Stats -->
+                <h2 class="section-title" style="color: var(--accent-green);">💧 POND/SGB Liquidity Pool</h2>
                 <div class="grid-2 mb-3">
-                    <div class="stat-box">
-                        <div class="stat-box-label">SGB Reserves</div>
-                        <div class="stat-box-value green" id="poolWsgb">0</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-box-label">POND Reserves</div>
-                        <div class="stat-box-value gold" id="poolBake">0</div>
-                    </div>
+                    <div class="stat-box"><div class="stat-box-label">SGB Reserves</div><div class="stat-box-value green" id="poolWsgb">0</div></div>
+                    <div class="stat-box"><div class="stat-box-label">POND Reserves</div><div class="stat-box-value gold" id="poolBake">0</div></div>
                 </div>
-                
-                <!-- Price Display -->
                 <div class="cyber-card gold text-center mb-3">
                     <div class="form-label">POND Price</div>
-                    <div class="stat-box-value gold mb-1" style="font-size: 28px;"><span id="pondPrice">0.000000</span> SGB</div>
+                    <div class="stat-box-value gold mb-2" style="font-size: 28px;"><span id="pondPrice">0.000000</span> SGB</div>
                     <div class="stat-box-value green mb-2" style="font-size: 18px;">Market Cap: $<span id="marketCap">0</span></div>
-                    <div style="font-size: 14px; font-weight: bold;" id="allTimeChange">All-Time: +0.00%</div>
+                    <div style="font-size: 16px; font-weight: bold;" id="allTimeChange">All-Time: +0.00%</div>
                 </div>
-                
-                <!-- LP Dashboard (hidden until connected) -->
                 <div id="lpDashboard" class="cyber-card purple mb-3" style="display: none;">
-                    <div class="corner tl"></div>
-                    <div class="corner tr"></div>
-                    <div class="corner bl"></div>
-                    <div class="corner br"></div>
                     <h3 class="text-center mb-2" style="color: var(--accent-purple);">📊 Your LP Position</h3>
-                    
                     <div class="grid-2 mb-2">
-                        <div class="stat-box">
-                            <div class="stat-box-label">Your Pool Share</div>
-                            <div class="stat-box-value purple" id="lpPoolPercent">0%</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-box-label">Your Multiplier</div>
-                            <div class="stat-box-value gold" id="lpMultiplier">1x</div>
-                        </div>
+                        <div class="stat-box"><div class="stat-box-label">Your Pool Share</div><div class="stat-box-value purple" id="lpPoolPercent">0%</div></div>
+                        <div class="stat-box"><div class="stat-box-label">Your Multiplier</div><div class="stat-box-value gold" id="lpMultiplier">1x</div></div>
                     </div>
-                    
                     <div class="grid-2 mb-2">
-                        <div class="stat-box">
-                            <div class="stat-box-label">SGB Deposited</div>
-                            <div class="stat-box-value green" id="lpSgbDeposited">0</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-box-label">POND Deposited</div>
-                            <div class="stat-box-value gold" id="lpBakeDeposited">0</div>
-                        </div>
+                        <div class="stat-box"><div class="stat-box-label">SGB Deposited</div><div class="stat-box-value green" id="lpSgbDeposited">0</div></div>
+                        <div class="stat-box"><div class="stat-box-label">POND Deposited</div><div class="stat-box-value gold" id="lpBakeDeposited">0</div></div>
                     </div>
-                    
-                    <div class="stat-box mb-2">
-                        <div class="stat-box-label">Lock Status</div>
-                        <div style="font-size: 14px; font-weight: bold; color: var(--accent-orange);" id="lpLockStatus">-</div>
-                    </div>
-                    
-                    <!-- Rewards Section -->
+                    <div class="stat-box mb-2"><div class="stat-box-label">Lock Status</div><div style="font-size: 16px; font-weight: bold; color: var(--accent-orange);" id="lpLockStatus">-</div></div>
                     <div class="lp-rewards-section">
                         <div class="lp-rewards-title">🎁 Your Rewards</div>
                         <div class="grid-2 mb-2">
-                            <div class="text-center">
-                                <div class="stat-box-label">POND (Claim Now)</div>
-                                <div class="stat-box-value gold" style="font-size: 18px;" id="lpPendingBake">0</div>
-                                <button class="btn btn-gold btn-sm mt-1" onclick="claimPondRewards()">Claim POND</button>
-                            </div>
-                            <div class="text-center">
-                                <div class="stat-box-label">SGB (Claimable)</div>
-                                <div class="stat-box-value green" style="font-size: 18px;" id="lpClaimableSgb">0</div>
-                                <button class="btn btn-green btn-sm mt-1" onclick="claimSgbRewards()">Claim SGB</button>
-                            </div>
+                            <div class="text-center"><div class="stat-box-label">POND (Claim Now)</div><div class="stat-box-value gold" style="font-size: 18px;" id="lpPendingBake">0</div><button class="btn btn-gold btn-sm mt-1" onclick="claimPondRewards()">Claim POND</button></div>
+                            <div class="text-center"><div class="stat-box-label">SGB (Claimable)</div><div class="stat-box-value green" style="font-size: 18px;" id="lpClaimableSgb">0</div><button class="btn btn-green btn-sm mt-1" onclick="claimSgbRewards()">Claim SGB</button></div>
                         </div>
-                        <div class="stat-box text-center">
-                            <div class="stat-box-label">SGB Pending (Next Claim)</div>
-                            <div style="font-size: 16px; font-weight: bold; color: var(--text-muted);" id="lpPendingSgb">0</div>
-                            <div style="font-size: 11px; color: var(--accent-orange);" id="lpSgbCountdown">-</div>
-                        </div>
+                        <div class="stat-box text-center"><div class="stat-box-label">SGB Pending (Next Claim)</div><div style="font-size: 16px; font-weight: bold; color: var(--text-muted);" id="lpPendingSgb">0</div><div style="font-size: 11px; color: var(--accent-orange);" id="lpSgbCountdown">-</div></div>
                     </div>
-                    
-                    <div class="lp-next-tier mb-2">
-                        Add <span id="lpSgbNeeded" style="font-weight: bold;">0</span> SGB to reach <span id="lpNextPercent" style="font-weight: bold;">1%</span> pool share
-                    </div>
-                    
+                    <div class="lp-next-tier mb-2">Add <span id="lpSgbNeeded" style="font-weight: bold;">0</span> SGB to reach <span id="lpNextPercent" style="font-weight: bold;">1%</span> pool share</div>
                     <div id="lpUnlockSection" class="text-center" style="display: none;">
                         <div style="font-size: 14px; color: var(--accent-green); margin-bottom: 10px;">🔓 Lock expired!</div>
-                        <button class="btn btn-secondary btn-sm" onclick="relockPosition(0)">Relock 30d</button>
-                        <button class="btn btn-secondary btn-sm" onclick="relockPosition(1)">Relock 90d</button>
+                        <button class="btn btn-sm" style="background: var(--bg-elevated);" onclick="relockPosition(0)">Relock 30d</button>
+                        <button class="btn btn-sm" style="background: var(--bg-elevated);" onclick="relockPosition(1)">Relock 90d</button>
                         <button class="btn btn-purple btn-sm" onclick="relockPosition(2)">Relock 180d</button>
-                        <button class="btn btn-danger btn-sm" onclick="removeLiquidity()">Withdraw</button>
+                        <button class="btn btn-sm" style="background: var(--accent-red);" onclick="removeLiquidity()">Withdraw</button>
                     </div>
                 </div>
-                
-                <!-- Add Liquidity -->
                 <div id="addLiquiditySection" class="cyber-card green mb-3">
-                    <div class="corner tl"></div>
-                    <div class="corner tr"></div>
-                    <div class="corner bl"></div>
-                    <div class="corner br"></div>
                     <h3 class="text-center mb-2" style="color: var(--accent-green);">💧 Add Liquidity</h3>
-                    
-                    <div class="stat-box text-center mb-2" style="background: rgba(139, 92, 246, 0.15);">
-                        <div class="stat-box-label">Your NFT Bonus</div>
-                        <div class="stat-box-value purple" id="userNftBonus">+0.000x</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <div class="form-label">Lock Period</div>
-                        <select id="lockTierSelect" class="cyber-select">
-                            <option value="0">30 Days (1x)</option>
-                            <option value="1">90 Days (1.5x)</option>
-                            <option value="2" selected>180 Days (2.5x)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <div class="form-label">SGB Amount</div>
-                        <input type="number" id="wsgbInput" class="cyber-input centered" placeholder="0.0">
-                    </div>
-                    
-                    <div class="form-group">
-                        <div class="form-label">POND Amount (auto-calculated at 0.5x ratio)</div>
-                        <input type="number" id="bakeRequired" class="cyber-input centered" placeholder="0.0" readonly>
-                    </div>
-                    
-                    <div id="firstDepositorToggle" class="text-center mb-2" style="display: none;">
-                        <label style="color: var(--accent-orange); font-size: 14px; cursor: pointer;">
-                            <input type="checkbox" id="isFirstDepositor" onchange="toggleFirstDepositor()" style="margin-right: 8px;">
-                            I am first depositor (set custom ratio)
-                        </label>
-                    </div>
-                    
-                    <button class="btn btn-green btn-block btn-lg" onclick="addLiquidity()">💧 ADD LIQUIDITY</button>
+                    <div class="stat-box text-center mb-2" style="background: rgba(139, 92, 246, 0.15);"><div class="stat-box-label">Your NFT Bonus</div><div class="stat-box-value purple" id="userNftBonus">+0.000x</div></div>
+                    <div class="form-group"><div class="form-label">Lock Period</div><select id="lockTierSelect" class="cyber-select"><option value="0">30 Days (1x)</option><option value="1">90 Days (1.5x)</option><option value="2" selected>180 Days (2.5x)</option></select></div>
+                    <div class="form-group"><div class="form-label">SGB Amount</div><input type="number" id="wsgbInput" class="cyber-input centered" placeholder="0.0"></div>
+                    <div class="form-group"><div class="form-label">POND Amount (auto-calculated at 0.5x ratio)</div><input type="number" id="bakeRequired" class="cyber-input centered" placeholder="0.0" readonly></div>
+                    <div id="firstDepositorToggle" class="text-center mb-2" style="display: none;"><label style="color: var(--accent-orange); font-size: 14px; cursor: pointer;"><input type="checkbox" id="isFirstDepositor" onchange="toggleFirstDepositor()" style="margin-right: 8px;">I am first depositor (set custom ratio)</label></div>
+                    <button class="btn btn-green btn-lg" style="width: 100%;" onclick="addLiquidity()">💧 ADD LIQUIDITY</button>
                 </div>
-                
-                <!-- Swap Section -->
                 <div class="cyber-card blue">
-                    <div class="corner tl"></div>
-                    <div class="corner tr"></div>
-                    <div class="corner bl"></div>
-                    <div class="corner br"></div>
                     <h3 class="text-center mb-2" style="color: var(--accent-blue);">🔄 Swap Tokens</h3>
-                    
-                    <div class="form-group">
-                        <div class="form-label">From</div>
-                        <input type="number" id="swapFromAmount" class="cyber-input centered" placeholder="0.0">
-                        <select id="swapFromToken" class="cyber-select mt-1">
-                            <option value="SGB">SGB</option>
-                            <option value="POND">POND</option>
-                        </select>
-                    </div>
-                    
+                    <div class="form-group"><div class="form-label">From</div><input type="number" id="swapFromAmount" class="cyber-input centered" placeholder="0.0"><select id="swapFromToken" class="cyber-select mt-1"><option value="SGB">SGB</option><option value="POND">POND</option></select></div>
                     <div class="text-center mb-2" style="font-size: 24px;">⬇️</div>
-                    
-                    <div class="form-group">
-                        <div class="form-label">To (estimated)</div>
-                        <input type="number" id="swapToAmount" class="cyber-input centered" placeholder="0.0" readonly>
-                    </div>
-                    
-                    <button class="btn btn-blue btn-block btn-lg" onclick="executeSwap()">🔄 SWAP</button>
+                    <div class="form-group"><div class="form-label">To (estimated)</div><input type="number" id="swapToAmount" class="cyber-input centered" placeholder="0.0" readonly></div>
+                    <button class="btn btn-blue btn-lg" style="width: 100%;" onclick="executeSwap()">🔄 SWAP</button>
                 </div>
             </div>
 
-            <!-- ==================== LEADERBOARD TAB ==================== -->
+            <!-- LEADERBOARD TAB -->
             <div id="leaderboardTab" class="tab-content">
                 <h2 class="section-title gold">🏆 TOP PLAYERS</h2>
                 <div class="leaderboard mb-4" id="leaderboardList"></div>
-                
                 <h2 class="section-title blue">📊 YOUR HISTORY</h2>
                 <div class="cyber-card" style="overflow-x: auto;">
                     <table class="history-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Action</th>
-                                <th class="text-right">Amount</th>
-                                <th class="text-center">Type</th>
-                            </tr>
-                        </thead>
-                        <tbody id="historyTableBody">
-                            <tr>
-                                <td colspan="4" class="text-center" style="color: var(--text-muted); padding: 24px;">No history yet.</td>
-                            </tr>
-                        </tbody>
+                        <thead><tr><th>Date</th><th>Action</th><th class="text-right">Amount</th><th class="text-center">Type</th></tr></thead>
+                        <tbody id="historyTableBody"><tr><td colspan="4" class="text-center" style="color: var(--text-muted); padding: 24px;">No history yet.</td></tr></tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- ==================== MARKETPLACE TAB ==================== -->
+            <!-- MARKETPLACE TAB -->
             <div id="marketplaceTab" class="tab-content">
                 <h2 class="section-title pink">✨ POND Marketplace</h2>
-                
-                <!-- Wallet Warning -->
                 <div id="marketplaceWalletWarning" class="alert warning">
                     <div class="alert-icon">⚠️</div>
-                    <div class="alert-content">
-                        <div class="alert-title">Connect Wallet to Shop</div>
-                        <div class="alert-text">You need to connect your wallet first</div>
-                    </div>
-                    <button class="btn btn-primary" onclick="connectWallet()">🔗 Connect Wallet</button>
+                    <div class="alert-content"><div class="alert-title">Connect Wallet to Shop</div><div class="alert-text">You need to connect your wallet first</div></div>
+                    <button class="btn btn-primary" onclick="connectWallet()">🔗 Connect</button>
                 </div>
-                
-                <!-- Category Tabs -->
                 <div class="category-tabs">
                     <div onclick="showCategory('tacticals')" class="category-tab-btn active">⚔️ Tacticals</div>
                     <div onclick="showCategory('skins')" class="category-tab-btn">🎨 Skins</div>
                     <div onclick="showCategory('trails')" class="category-tab-btn">✨ Trails</div>
                     <div onclick="showCategory('effects')" class="category-tab-btn">💥 Death FX</div>
                 </div>
-                
-                <!-- Marketplace Items Grid -->
                 <div id="marketplaceItems" class="grid-auto"></div>
             </div>
         </div>
@@ -542,686 +318,264 @@
         }
         createParticles();
 
-        // ==================== CONFIGURATION ====================
+        // ==================== ALL ORIGINAL GAME CODE FROM index-8.html ====================
         const SONGBIRD_RPC = 'https://songbird-api.flare.network/ext/C/rpc';
         const BACKEND_URL = 'https://just-presence-production-2e9e.up.railway.app';
-        const CONTRACTS = {
-            POND_TOKEN: '0x39fec3F97668e393862Dbb3C442f3Dd3d5016D69',
-            GAME_CONTRACT: '0xaB27737d60ce0FaC521f82e3d2703d0D1c279E49',
-            POOL_CONTRACT: '0x4A1975d708F713DBD3fFF3C7B6afB289a23A49Ca',
-            WSGB: '0x02f0826ef6aD107Cfc861152B32B52fD11BaB9ED',
-            STOADZ_NFT: '0x0F02AD5e75f849DBcdA29A0A14e2a9EC7eF55E8e',
-            SONGBIRD_CITY_NFT: '0xe7ddcDf9db2C4e86f9A94c0a38e0dD0f5C7d5F48',
-            LUXURY_LOFTS_NFT: '0x3E51C96B6D4D8a8E1F3A8E9a6F5B3D1c2E4A5B6C'
+        const CONTRACTS = { 
+            POND_TOKEN: '0x39fec3F97668e393862Dbb3C442f3Dd3d5016D69', 
+            GAME_CONTRACT: '0xaB27737d60ce0FaC521f82e3d2703d0D1c279E49', 
+            POOL_CONTRACT: '0x4A1975d708F713DBD3fFF3C7B6afB289a23A49Ca', 
+            WSGB: '0x02f0826ef6aD107Cfc861152B32B52fD11BaB9ED', 
+            STOADZ_NFT: '0x35afb6Ba51839dEDD33140A3b704b39933D1e642', 
+            SONGBIRD_CITY_NFT: '0x360f8b7d9530f55ab8e52394e6527935635f51e7', 
+            LUXURY_LOFTS_NFT: '0x91aa85a172dd3e7eea4ad1a4b33e90cbf3b99ed8' 
         };
+        const ERC20_ABI = ["function balanceOf(address) view returns (uint256)","function approve(address spender, uint256 amount) returns (bool)"];
+        const ERC721_ABI = ["function balanceOf(address owner) view returns (uint256)"];
+        const POOL_ABI = ["function addLiquidity(uint256 pondAmount, uint256 lockTier) payable returns (uint256)","function addMore(uint256 pondAmount) payable","function removeLiquidity() external","function claimPondRewards() external","function claimSgbRewards() external","function reserveSGB() external view returns (uint256)","function reservePOND() external view returns (uint256)","function getUserInfo(address user) external view returns (uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256)","function getPondOut(uint256 sgbIn) view returns (uint256)","function getSgbOut(uint256 pondIn) view returns (uint256)","function swapSgbForPond() payable returns (uint256)","function swapPondForSgb(uint256 amt) returns (uint256)","function getStakedNFTBonus(address user) view returns (uint256)","function getWalletNFTBonus(address user) view returns (uint256)","function lpClaimableSgb(address user) view returns (uint256)"];
         
-        const ERC20_ABI = [
-            "function balanceOf(address) view returns (uint256)",
-            "function approve(address spender, uint256 amount) returns (bool)",
-            "function allowance(address owner, address spender) view returns (uint256)",
-            "function transfer(address to, uint256 amount) returns (bool)"
-        ];
-        
-        const POOL_ABI = [
-            "function addLiquidity(uint256 pondAmount, uint256 lockTier) payable returns (uint256)",
-            "function removeLiquidity() returns (uint256, uint256)",
-            "function claimPondRewards() returns (uint256)",
-            "function claimSgbRewards() returns (uint256)",
-            "function relockPosition(uint256 newTier)",
-            "function swapSgbForPond() payable returns (uint256)",
-            "function swapPondForSgb(uint256 pondAmount) returns (uint256)",
-            "function reserveSGB() external view returns (uint256)",
-            "function reservePOND() external view returns (uint256)",
-            "function positions(address) view returns (uint256 sgbDeposited, uint256 pondDeposited, uint256 shares, uint256 lockTier, uint256 lockEnd, uint256 pendingPond, uint256 pendingSgb, uint256 lastSgbClaim)",
-            "function totalShares() view returns (uint256)"
-        ];
-        
-        const NFT_ABI = ["function balanceOf(address) view returns (uint256)"];
-
-        // ==================== STATE ====================
-        let wallet = null, balance = 100000, sgbBalance = 1000;
-        let gameCredits = parseInt(localStorage.getItem('gameCredits') || '0');
-        let provider, signer, pondContract, poolContract;
-        let selectedVehicle = null, currentModal = null;
+        let wallet = null, balance = 100000, sgbBalance = 1000, gameCredits = parseInt(localStorage.getItem('gameCredits') || '0');
+        let currentSessionId = null;
+        let sessionEarnings = 0;
+        let userHistory = JSON.parse(localStorage.getItem('bakeHistory') || '[]'), leaderboard = JSON.parse(localStorage.getItem('bakeLeaderboard') || '[]');
+        let username = '', canvas, ctx, gameLoop, player, enemies = [], bullets = [], walls = [], pickups = [], activeTurrets = [], explosionEffects = [];
+        let keys = {}, mouse = { x: 0, y: 0, clicked: false }, pot = 1000, kills = 0, streak = 0, aliveCount = 8;
+        let gameTime = 0, gameStartTime = 0, lives = 5, totalKills = 0, provider, signer, pondContract, poolContract, selectedVehicle = null, currentModal = null, screenShakeIntensity = 0, userNftCount = 0;
+        let userIsLP = false;
         let sgbPriceUSD = 0.0027;
-        let userHistory = JSON.parse(localStorage.getItem('bakeHistory') || '[]');
-        let leaderboard = JSON.parse(localStorage.getItem('bakeLeaderboard') || '[]');
+        
+        const ENEMY_NAMES = ['SHADOW', 'VIPER', 'GHOST', 'BLAZE', 'PHOENIX', 'STRIKER', 'REAPER', 'TITAN', 'HAVOC', 'FURY', 'STORM', 'RAZOR', 'BOLT', 'HUNTER', 'ROGUE'];
+        const ENEMY_COLORS = ['#ef4444', '#f97316', '#fbbf24', '#22c55e', '#06b6d4', '#3b82f6', '#8b5cf6', '#ec4899'];
+        const ENEMY_SHAPES = ['rectangle', 'square', 'diamond', 'hexagon', 'triangle', 'oval', 'pentagon', 'trapezoid'];
         
         const MARKETPLACE = {
-            skins: [{id:'gold',name:'Golden Warrior',rarity:'legendary',price:50000,icon:'🏆',desc:'Shine like a champion'},{id:'chrome',name:'Chrome Crusader',rarity:'epic',price:35000,icon:'💎',desc:'Reflective perfection'},{id:'neon',name:'Neon Racer',rarity:'epic',price:40000,icon:'🌟',desc:'Glow in the dark'},{id:'camo',name:'Digital Camo',rarity:'rare',price:25000,icon:'🎯',desc:'Tactical stealth'}],
-            trails: [{id:'rainbow',name:'Rainbow Trail',rarity:'epic',price:40000,icon:'🌈',desc:'Taste the rainbow'},{id:'lightning',name:'Lightning Bolt',rarity:'epic',price:35000,icon:'⚡',desc:'Electric shock'},{id:'fire',name:'Flame Trail',rarity:'rare',price:25000,icon:'🔥',desc:'Hot shots'}],
-            effects: [{id:'confetti',name:'Confetti Burst',rarity:'rare',price:30000,icon:'🎉',desc:'Party on death'},{id:'nuclear',name:'Nuclear Meltdown',rarity:'epic',price:50000,icon:'☢️',desc:'Atomic explosion'},{id:'blackhole',name:'Black Hole',rarity:'legendary',price:60000,icon:'🌀',desc:'Suck everything in'}],
-            tacticals: [{id:'orbital',name:'Orbital Laser',rarity:'legendary',price:150000,icon:'🛸',desc:'Space laser (180s cd)'},{id:'turret',name:'Auto Turret',rarity:'legendary',price:80000,icon:'🔫',desc:'Deploy turret (60s cd)'},{id:'shield',name:'Shield Dome',rarity:'epic',price:70000,icon:'🛡️',desc:'Block bullets 10s (90s cd)'},{id:'heal',name:'Heal Station',rarity:'rare',price:50000,icon:'❤️',desc:'Restore HP (60s cd)'}]
+            skins: [{id:'gold',name:'Golden Warrior',rarity:'legendary',price:50000,icon:'🏆',color:'#fbbf24',desc:'Shine like a champion'},{id:'chrome',name:'Chrome Crusader',rarity:'epic',price:35000,icon:'💎',color:'#e5e7eb',desc:'Reflective perfection'},{id:'neon',name:'Neon Racer',rarity:'epic',price:40000,icon:'🌟',color:'#a855f7',desc:'Glow in the dark'},{id:'camo',name:'Digital Camo',rarity:'rare',price:25000,icon:'🎯',color:'#65a30d',desc:'Tactical stealth'},{id:'fire',name:'Flame Decal',rarity:'rare',price:30000,icon:'🔥',color:'#f97316',desc:'Trail of fire'},{id:'ice',name:'Ice King',rarity:'rare',price:30000,icon:'❄️',color:'#06b6d4',desc:'Cool under pressure'}],
+            trails: [{id:'rainbow',name:'Rainbow Trail',rarity:'epic',price:40000,icon:'🌈',desc:'Taste the rainbow'},{id:'lightning',name:'Lightning Bolt',rarity:'epic',price:35000,icon:'⚡',desc:'Electric shock'},{id:'fire',name:'Flame Trail',rarity:'rare',price:25000,icon:'🔥',desc:'Hot shots'},{id:'toxic',name:'Toxic Waste',rarity:'rare',price:25000,icon:'☢️',desc:'Radioactive'},{id:'hearts',name:'Love Hearts',rarity:'rare',price:30000,icon:'💕',desc:'Spread the love'},{id:'stars',name:'Star Shower',rarity:'rare',price:30000,icon:'⭐',desc:'Wish upon a bullet'}],
+            effects: [{id:'confetti',name:'Confetti Burst',rarity:'rare',price:30000,icon:'🎉',desc:'Party on death'},{id:'nuclear',name:'Nuclear Meltdown',rarity:'epic',price:50000,icon:'☢️',desc:'Atomic explosion'},{id:'fireworks',name:'Fireworks Show',rarity:'epic',price:40000,icon:'🎆',desc:'Grand finale'},{id:'blackhole',name:'Black Hole',rarity:'legendary',price:60000,icon:'🌀',desc:'Suck everything in'},{id:'angel',name:'Ascension',rarity:'rare',price:35000,icon:'👼',desc:'Rise to heaven'},{id:'cartoon',name:'Cartoon Poof',rarity:'rare',price:25000,icon:'💭',desc:'Looney Tunes style'}],
+            tacticals: [{id:'orbital',name:'Orbital Laser',rarity:'legendary',price:150000,icon:'🛸',desc:'Space laser (180s cd)'},{id:'timeslow',name:'Time Distortion',rarity:'legendary',price:120000,icon:'⏱️',desc:'Bullet time 8s (150s cd)'},{id:'turret',name:'Auto Turret',rarity:'legendary',price:80000,icon:'🔫',desc:'Deploy turret (60s cd)'},{id:'airstrike',name:'Airstrike',rarity:'legendary',price:100000,icon:'✈️',desc:'Call explosions (120s cd)'},{id:'shield',name:'Shield Dome',rarity:'epic',price:70000,icon:'🛡️',desc:'Block bullets 10s (90s cd)'},{id:'emp',name:'EMP Mine',rarity:'epic',price:60000,icon:'💣',desc:'Slow enemies (45s cd)'},{id:'heal',name:'Heal Station',rarity:'rare',price:50000,icon:'❤️',desc:'Restore HP (60s cd)'},{id:'decoy',name:'Decoy Vehicle',rarity:'rare',price:40000,icon:'👻',desc:'Fake target (30s cd)'}]
         };
         let inventory = JSON.parse(localStorage.getItem('bakeInventory') || '{"skins":[],"trails":[],"effects":[],"tacticals":[]}');
-
-        // ==================== MODAL SYSTEM ====================
-        function closeCurrentModal() { 
-            if (currentModal && currentModal.parentNode) { 
-                document.body.removeChild(currentModal); 
-                currentModal = null; 
-            } 
+        
+        const sarahMessages = { start:"Good luck out there! 💕", kill1:"Nice shot... really nice 🎯", kill3:"You're making me feel things 🔥", kill5:"God, watching you dominate... 😳💦", kill8:"My husband never handles his weapon like that 🍆", kill10:"I need to see you after this match. Alone. 💋", kill15:"Fuck it, I'm leaving him 💍❌", kill20:"Take me right here 🥵🔞", lowHP:"Baby no! Stay alive! ❤️‍🔥", lastStanding:"Finish them so you can finish me 💦", victory:"That was SO hot. My place? 🏠🔥", pickup_health:"Mmm, getting harder? 💚", pickup_damage:"Bigger is better 💥😏", pickup_speed:"Faster baby! ⚡💨", pickup_shield:"Protect yourself 🛡️💕" };
+        
+        async function fetchSGBPrice() { try { const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=songbird&vs_currencies=usd'); const data = await response.json(); if (data.songbird && data.songbird.usd) { sgbPriceUSD = data.songbird.usd; } } catch (err) { console.error('Failed to fetch SGB price:', err); } }
+        
+        function showSarahMessage(type) { const el = document.getElementById('sarahText'); if (sarahMessages[type]) el.textContent = sarahMessages[type]; }
+        function addHistoryEntry(action, amount, type) { userHistory.unshift({ date: new Date().toISOString(), action, amount, type }); if (userHistory.length > 100) userHistory = userHistory.slice(0, 100); localStorage.setItem('bakeHistory', JSON.stringify(userHistory)); updateHistoryTable(); }
+        function updateHistoryTable() { const tbody = document.getElementById('historyTableBody'); if (!userHistory.length) { tbody.innerHTML = '<tr><td colspan="4" style="padding: 20px; text-align: center; color: var(--text-muted);">No history yet.</td></tr>'; return; } tbody.innerHTML = userHistory.slice(0,20).map(e => { const d = new Date(e.date); const colors = { earn: 'var(--accent-green)', spend: 'var(--accent-gold)', burn: 'var(--accent-red)', lp: 'var(--accent-blue)' }; return '<tr><td style="color: var(--text-muted); font-size: 13px;">'+d.toLocaleDateString()+'</td><td>'+e.action+'</td><td class="text-right" style="font-weight: bold;">'+e.amount.toLocaleString()+' POND</td><td class="text-center"><span style="background: '+colors[e.type]+'22; color: '+colors[e.type]+'; padding: 4px 10px; border-radius: 4px; font-size: 11px;">'+e.type.toUpperCase()+'</span></td></tr>'; }).join(''); }
+        function updateLeaderboardDisplay() { const list = document.getElementById('leaderboardList'); if (!leaderboard.length) { list.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 40px;">No games played yet.</div>'; return; } list.innerHTML = leaderboard.slice(0, 10).map((e, i) => { const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : '#'+(i + 1); return '<div class="leaderboard-entry '+(i < 3 ? 'top' : '')+'"><span class="leaderboard-rank">'+medal+'</span><span class="leaderboard-name">'+e.name+'</span><span class="leaderboard-score">'+e.bake.toLocaleString()+' POND</span><span class="leaderboard-kills">'+e.kills+' kills</span></div>'; }).join(''); }
+        function closeCurrentModal() { if (currentModal && currentModal.parentNode) { document.body.removeChild(currentModal); currentModal = null; } }
+        function showCustomModal(title, message, buttons) { if (!buttons) buttons = [{text: 'OK'}]; return new Promise(function(resolve) { closeCurrentModal(); const modal = document.createElement('div'); modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;justify-content:center;align-items:center;z-index:10001;backdrop-filter:blur(8px);'; let btnHtml = ''; buttons.forEach(function(b, i) { btnHtml += '<button id="modalBtn'+i+'" class="btn '+(i===0?'btn-primary':'btn-secondary')+'" style="margin:5px;">'+b.text+'</button>'; }); modal.innerHTML = '<div class="cyber-card" style="max-width:500px;text-align:center;"><div style="font-family:Orbitron;font-size:28px;font-weight:bold;color:var(--accent-primary);margin-bottom:20px;">'+title+'</div><div style="color:var(--text-secondary);font-size:16px;margin-bottom:30px;line-height:1.6;white-space:pre-line;">'+message+'</div><div>'+btnHtml+'</div></div>'; document.body.appendChild(modal); currentModal = modal; buttons.forEach(function(b, i) { document.getElementById('modalBtn'+i).onclick = function() { closeCurrentModal(); if (b.onClick) b.onClick(); resolve(i === 0); }; }); }); }
+        function updateCreditsDisplay() { ['creditsDisplay', 'gameCredits', 'inGameCredits'].forEach(function(id) { const el = document.getElementById(id); if (el) el.textContent = gameCredits; }); localStorage.setItem('gameCredits', gameCredits.toString()); }
+        
+        async function buyCredits(amount) { if (!wallet) { await showCustomModal('⚠️ Wallet Required', 'Connect wallet first'); return; } if (sgbBalance < amount) { await showCustomModal('⚠️ Insufficient SGB', 'You need '+amount+' SGB'); return; } try { const confirmed = await showCustomModal('🎟️ Buy '+amount+' Credits', 'Pay '+amount+' SGB?', [{text: 'Buy'}, {text: 'Cancel'}]); if (!confirmed) return; const sgbWei = ethers.utils.parseEther(amount.toString()); showCustomModal('⏳ Opening MetaMask', 'Check MetaMask...'); const tx = await signer.sendTransaction({ to: CONTRACTS.POOL_CONTRACT, value: sgbWei }); showCustomModal('⏳ Processing', 'Waiting...'); await tx.wait(); const newSgbBalance = await provider.getBalance(wallet); sgbBalance = parseFloat(ethers.utils.formatEther(newSgbBalance)); document.getElementById('walletSGBBanner').textContent = sgbBalance.toFixed(2); gameCredits += amount; updateCreditsDisplay(); await showCustomModal('✅ Credits Purchased', 'You have '+gameCredits+' credits!'); } catch (error) { await showCustomModal('❌ Failed', error.message); } }
+        
+        async function buyCreditsInGame(amount) { if (!wallet || sgbBalance < amount) return false; try { const sgbWei = ethers.utils.parseEther(amount.toString()); showCustomModal('⏳ Buying credits...', 'Check MetaMask'); const tx = await signer.sendTransaction({ to: CONTRACTS.POOL_CONTRACT, value: sgbWei }); await tx.wait(); const newSgbBalance = await provider.getBalance(wallet); sgbBalance = parseFloat(ethers.utils.formatEther(newSgbBalance)); gameCredits += amount; updateCreditsDisplay(); return true; } catch (e) { return false; } }
+        
+        async function addSongbirdNetwork() { try { await window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: '0x13', chainName: 'Songbird', nativeCurrency: { name: 'Songbird', symbol: 'SGB', decimals: 18 }, rpcUrls: [SONGBIRD_RPC], blockExplorerUrls: ['https://songbird-explorer.flare.network/'] }] }); showCustomModal('✅ Success', 'Songbird added!'); } catch (e) { showCustomModal('❌ Error', e.message); } }
+        
+        async function connectWallet() { const walletBtn = document.getElementById('walletBtn'); try { walletBtn.disabled = true; walletBtn.innerHTML = '⏳ Connecting...'; provider = new ethers.providers.Web3Provider(window.ethereum); await provider.send("eth_requestAccounts", []); signer = provider.getSigner(); pondContract = new ethers.Contract(CONTRACTS.POND_TOKEN, ERC20_ABI, signer); poolContract = new ethers.Contract(CONTRACTS.POOL_CONTRACT, POOL_ABI, signer); wallet = await signer.getAddress(); const pondBalance = await pondContract.balanceOf(wallet); const sgbBalanceWei = await provider.getBalance(wallet); balance = parseFloat(ethers.utils.formatEther(pondBalance)); sgbBalance = parseFloat(ethers.utils.formatEther(sgbBalanceWei)); walletBtn.textContent = '✓ Connected'; walletBtn.className = 'btn btn-primary wallet-connected'; walletBtn.onclick = null; document.getElementById('importTokenBtn').style.display = 'inline-block'; document.getElementById('networkBtn').style.display = 'inline-block'; document.getElementById('lpBanner').style.display = 'none'; document.getElementById('walletBanner').style.display = 'block'; document.getElementById('walletAddrBanner').textContent = wallet.substr(0, 6) + '...' + wallet.substr(-4); document.getElementById('walletBalBanner').textContent = Math.floor(balance).toLocaleString(); document.getElementById('walletSGBBanner').textContent = sgbBalance.toFixed(2); document.getElementById('gameSetup').style.display = 'block'; document.getElementById('buyWalletWarning').style.display = 'none'; document.getElementById('bulkPurchaseSection').style.display = 'block'; document.getElementById('marketplaceWalletWarning').style.display = 'none'; updateCreditsDisplay(); await updatePoolData(); await updateLPDashboard(); await updateBulkVestStatus(); await updatePackagePrices(); await updateNFTBonus(); } catch (e) { showCustomModal('❌ Failed', e.message); walletBtn.disabled = false; walletBtn.innerHTML = '🔗 Connect Wallet'; } }
+        
+        async function updateNFTBonus() { if (!wallet) return; try { const stakedBonus = await poolContract.getStakedNFTBonus(wallet); const bonusMultiplier = stakedBonus.toNumber() / 10000; document.getElementById('userNftBonus').textContent = '+' + bonusMultiplier.toFixed(3) + 'x (Staked NFTs)'; } catch (e) { document.getElementById('userNftBonus').textContent = '+0.000x'; } }
+        
+        async function claimSessionRewards() { if (!wallet || sessionEarnings <= 0 || !currentSessionId) return; try { console.log('Claiming rewards:', sessionEarnings, 'POND'); const response = await fetch(BACKEND_URL + '/payout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ playerAddress: wallet, pondAmount: sessionEarnings.toString(), sessionId: currentSessionId, kills: kills, timestamp: Date.now() }) }); const data = await response.json(); if (data.success) { console.log('✅ POND claimed! TX:', data.txHash); showCustomModal('✅ POND Claimed!', sessionEarnings.toFixed(0) + ' POND sent to your wallet!\n\nTX: ' + data.txHash.substr(0, 10) + '...', [{text: 'OK'}]); if (pondContract) { const newBalance = await pondContract.balanceOf(wallet); balance = parseFloat(ethers.utils.formatEther(newBalance)); document.getElementById('walletBalBanner').textContent = Math.floor(balance).toLocaleString(); } } else { console.error('Payout failed:', data.error); showCustomModal('⚠️ Claim Failed', data.error || 'Could not process payout', [{text: 'OK'}]); } } catch (error) { console.error('Claim error:', error); showCustomModal('❌ Error', 'Failed to claim rewards: ' + error.message, [{text: 'OK'}]); } finally { sessionEarnings = 0; currentSessionId = null; } }
+        
+        async function importBAKEToken() { try { await window.ethereum.request({ method: 'wallet_watchAsset', params: { type: 'ERC20', options: { address: CONTRACTS.POND_TOKEN, symbol: 'POND', decimals: 18 } } }); showCustomModal('✅ Success', 'POND added!'); } catch (e) { showCustomModal('❌ Error', e.message); } }
+        
+        async function updatePoolData() { try { const wsgbReserve = await poolContract.reserveSGB(); const pondReserve = await poolContract.reservePOND(); const wsgbAmount = parseFloat(ethers.utils.formatEther(wsgbReserve)); const pondAmount = parseFloat(ethers.utils.formatEther(pondReserve)); document.getElementById('poolWsgb').textContent = wsgbAmount.toFixed(2); document.getElementById('poolBake').textContent = Math.floor(pondAmount).toLocaleString(); if (wsgbAmount > 0 && pondAmount > 0) { const price = wsgbAmount / pondAmount; document.getElementById('pondPrice').textContent = price.toFixed(6); const priceUSD = price * sgbPriceUSD; document.getElementById('pondPriceUSD').textContent = priceUSD.toFixed(6); const marketCap = priceUSD * 11900000000; document.getElementById('marketCap').textContent = marketCap.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0}); document.getElementById('marketcapLP').textContent = marketCap.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0}); const priceChange = ((price - 0.000003112356) / 0.000003112356) * 100; const changeEl = document.getElementById('allTimeChange'); const changePercentEl = document.getElementById('priceChangePercent'); changeEl.textContent = 'All-Time: ' + (priceChange >= 0 ? '+' : '') + priceChange.toFixed(2) + '%'; changeEl.style.color = priceChange >= 0 ? 'var(--accent-green)' : 'var(--accent-red)'; changePercentEl.textContent = (priceChange >= 0 ? '+' : '') + priceChange.toFixed(2); } } catch (e) { console.log('Pool data error:', e); } }
+        
+        async function updateLPDashboard() { if (!wallet || !poolContract) return; try { const [sgbDep, pondDep, shares, lockTier, lockEnd, pendingPond, pendingSgb, lastClaim, , ] = await poolContract.getUserInfo(wallet); const sgbDeposited = parseFloat(ethers.utils.formatEther(sgbDep)); const pondDeposited = parseFloat(ethers.utils.formatEther(pondDep)); userIsLP = sgbDeposited > 0; if (!userIsLP) { document.getElementById('lpDashboard').style.display = 'none'; return; } document.getElementById('lpDashboard').style.display = 'block'; document.getElementById('lpSgbDeposited').textContent = sgbDeposited.toFixed(2); document.getElementById('lpBakeDeposited').textContent = Math.floor(pondDeposited).toLocaleString(); const wsgbReserve = await poolContract.reserveSGB(); const totalSgb = parseFloat(ethers.utils.formatEther(wsgbReserve)); const poolPercent = totalSgb > 0 ? (sgbDeposited / totalSgb * 100) : 0; document.getElementById('lpPoolPercent').textContent = poolPercent.toFixed(4) + '%'; const multipliers = ['1x', '1.5x', '2.5x']; document.getElementById('lpMultiplier').textContent = multipliers[lockTier.toNumber()] || '1x'; const lockEndTime = lockEnd.toNumber() * 1000; const now = Date.now(); if (lockEndTime > now) { const daysLeft = Math.ceil((lockEndTime - now) / (1000 * 60 * 60 * 24)); document.getElementById('lpLockStatus').textContent = daysLeft + ' days remaining'; document.getElementById('lpUnlockSection').style.display = 'none'; } else { document.getElementById('lpLockStatus').textContent = 'Unlocked'; document.getElementById('lpUnlockSection').style.display = 'block'; } const pendingPondAmount = parseFloat(ethers.utils.formatEther(pendingPond)); document.getElementById('lpPendingBake').textContent = Math.floor(pendingPondAmount).toLocaleString(); try { const claimableSgb = await poolContract.lpClaimableSgb(wallet); document.getElementById('lpClaimableSgb').textContent = parseFloat(ethers.utils.formatEther(claimableSgb)).toFixed(4); } catch (e) { document.getElementById('lpClaimableSgb').textContent = '0'; } const pendingSgbAmount = parseFloat(ethers.utils.formatEther(pendingSgb)); document.getElementById('lpPendingSgb').textContent = pendingSgbAmount.toFixed(4); const nextTierPercent = poolPercent < 1 ? 1 : poolPercent < 5 ? 5 : 10; const sgbNeeded = (nextTierPercent / 100 * totalSgb) - sgbDeposited; document.getElementById('lpSgbNeeded').textContent = Math.max(0, sgbNeeded).toFixed(2); document.getElementById('lpNextPercent').textContent = nextTierPercent + '%'; } catch (e) { console.log('LP dashboard error:', e); } }
+        
+        async function updateBulkVestStatus() {}
+        async function updatePackagePrices() {}
+        
+        async function claimPondRewards() { if (!wallet) return; try { showCustomModal('⏳', 'Claiming POND...'); const tx = await poolContract.claimPondRewards(); await tx.wait(); await updateLPDashboard(); const newBalance = await pondContract.balanceOf(wallet); balance = parseFloat(ethers.utils.formatEther(newBalance)); document.getElementById('walletBalBanner').textContent = Math.floor(balance).toLocaleString(); await showCustomModal('✅', 'POND claimed!'); } catch (e) { await showCustomModal('❌', e.message); } }
+        
+        async function claimSgbRewards() { if (!wallet) return; try { showCustomModal('⏳', 'Claiming SGB...'); const tx = await poolContract.claimSgbRewards(); await tx.wait(); await updateLPDashboard(); const newSgbBalance = await provider.getBalance(wallet); sgbBalance = parseFloat(ethers.utils.formatEther(newSgbBalance)); document.getElementById('walletSGBBanner').textContent = sgbBalance.toFixed(2); await showCustomModal('✅', 'SGB claimed!'); } catch (e) { await showCustomModal('❌', e.message); } }
+        
+        async function relockPosition(tier) { await showCustomModal('❌ Not Available', 'Relock feature coming soon'); }
+        
+        async function removeLiquidity() { if (!wallet) return; try { const confirmed = await showCustomModal('⚠️ Withdraw', 'Withdraw all liquidity?', [{text: 'Withdraw'}, {text: 'Cancel'}]); if (!confirmed) return; showCustomModal('⏳', 'Withdrawing...'); const tx = await poolContract.removeLiquidity(); await tx.wait(); await updateLPDashboard(); await updatePoolData(); const newBalance = await pondContract.balanceOf(wallet); balance = parseFloat(ethers.utils.formatEther(newBalance)); document.getElementById('walletBalBanner').textContent = Math.floor(balance).toLocaleString(); const newSgbBalance = await provider.getBalance(wallet); sgbBalance = parseFloat(ethers.utils.formatEther(newSgbBalance)); document.getElementById('walletSGBBanner').textContent = sgbBalance.toFixed(2); await showCustomModal('✅', 'Withdrawn!'); } catch (e) { await showCustomModal('❌', e.message); } }
+        
+        async function addLiquidity() { if (!wallet) { await showCustomModal('⚠️', 'Connect wallet first'); switchTab('play'); return; } try { const sgbAmount = parseFloat(document.getElementById('wsgbInput').value) || 0; const pondAmount = parseFloat(document.getElementById('bakeRequired').value) || 0; const lockTier = parseInt(document.getElementById('lockTierSelect').value); if (sgbAmount <= 0 || pondAmount <= 0) { await showCustomModal('⚠️', 'Enter valid amounts'); return; } if (balance < pondAmount) { await showCustomModal('⚠️', 'Need '+pondAmount.toLocaleString()+' POND'); return; } const lockDays = lockTier === 0 ? 30 : lockTier === 1 ? 90 : 180; const confirmed = await showCustomModal('💧 Add Liquidity', 'Add '+sgbAmount+' SGB + '+pondAmount.toFixed(0)+' POND?\nLock: '+lockDays+' days', [{text: 'Confirm'}, {text: 'Cancel'}]); if (!confirmed) return; const pondWei = ethers.utils.parseEther(pondAmount.toString()); const sgbWei = ethers.utils.parseEther(sgbAmount.toString()); showCustomModal('⏳ Step 1/2', 'Approve POND...'); const approveTx = await pondContract.approve(CONTRACTS.POOL_CONTRACT, pondWei); await approveTx.wait(); showCustomModal('⏳ Step 2/2', 'Adding liquidity...'); let tx; if (userIsLP) { tx = await poolContract.addMore(pondWei, {value: sgbWei}); } else { tx = await poolContract.addLiquidity(pondWei, lockTier, {value: sgbWei}); } await tx.wait(); const newBalance = await pondContract.balanceOf(wallet); balance = parseFloat(ethers.utils.formatEther(newBalance)); document.getElementById('walletBalBanner').textContent = Math.floor(balance).toLocaleString(); const newSgbBalance = await provider.getBalance(wallet); sgbBalance = parseFloat(ethers.utils.formatEther(newSgbBalance)); document.getElementById('walletSGBBanner').textContent = sgbBalance.toFixed(2); addHistoryEntry('Added '+sgbAmount+' SGB + '+pondAmount.toFixed(0)+' POND to LP', pondAmount, 'lp'); document.getElementById('wsgbInput').value = ''; document.getElementById('bakeRequired').value = ''; await updatePoolData(); await updateLPDashboard(); await showCustomModal('✅', 'Liquidity added!'); } catch (e) { await showCustomModal('❌', e.message); } }
+        
+        async function executeSwap() { if (!wallet) { await showCustomModal('⚠️', 'Connect wallet first'); return; } try { const fromAmount = parseFloat(document.getElementById('swapFromAmount').value) || 0; const fromToken = document.getElementById('swapFromToken').value; if (fromAmount <= 0) { await showCustomModal('⚠️', 'Enter valid amount'); return; } if (fromToken === 'POND' && balance < fromAmount) { await showCustomModal('⚠️', 'Need '+fromAmount.toLocaleString()+' POND'); return; } const confirmed = await showCustomModal('🔄 Swap', 'Swap '+fromAmount.toFixed(2)+' '+fromToken+'?', [{text: 'Confirm'}, {text: 'Cancel'}]); if (!confirmed) return; let tx; if (fromToken === 'SGB') { showCustomModal('⏳', 'Swapping...'); const sgbWei = ethers.utils.parseEther(fromAmount.toString()); tx = await poolContract.swapSgbForPond({value: sgbWei}); } else { const pondWei = ethers.utils.parseEther(fromAmount.toString()); showCustomModal('⏳ Step 1/2', 'Approve POND...'); const approveTx = await pondContract.approve(CONTRACTS.POOL_CONTRACT, pondWei); await approveTx.wait(); showCustomModal('⏳ Step 2/2', 'Swapping...'); tx = await poolContract.swapPondForSgb(pondWei); } await tx.wait(); const newBalance = await pondContract.balanceOf(wallet); balance = parseFloat(ethers.utils.formatEther(newBalance)); document.getElementById('walletBalBanner').textContent = Math.floor(balance).toLocaleString(); const newSgbBalance = await provider.getBalance(wallet); sgbBalance = parseFloat(ethers.utils.formatEther(newSgbBalance)); document.getElementById('walletSGBBanner').textContent = sgbBalance.toFixed(2); document.getElementById('swapFromAmount').value = ''; document.getElementById('swapToAmount').value = ''; await updatePoolData(); await showCustomModal('✅', 'Swap complete!'); } catch (e) { await showCustomModal('❌', e.message); } }
+        
+        function selectVehicle() { username = document.getElementById('username').value.trim().toUpperCase(); if (!username) { showCustomModal('⚠️', 'Enter a username'); return; } if (!wallet) { showCustomModal('⚠️', 'Connect wallet first'); return; } if (gameCredits < 1) { showCustomModal('⚠️ No Credits', 'Buy credits to play!'); return; } gameCredits--; updateCreditsDisplay(); document.getElementById('gameSetup').style.display = 'none'; document.getElementById('vehicleSelect').style.display = 'block'; }
+        function selectVehicleType(icon, hp, dmg) { selectedVehicle = { icon: icon, hp: hp, dmg: dmg }; document.getElementById('vehicleSelect').style.display = 'none'; document.getElementById('marketplaceUpsell').style.display = 'block'; showUpsellItems(); }
+        function showUpsellItems() { const container = document.getElementById('upsellItems'); const featured = [MARKETPLACE.tacticals[0], MARKETPLACE.tacticals[3], MARKETPLACE.tacticals[4], MARKETPLACE.tacticals[6]]; container.innerHTML = featured.map(function(item) { const owned = inventory.tacticals.includes(item.id); return '<div class="marketplace-item" style="'+(owned ? 'border-color: var(--accent-green);' : '')+'"><div class="item-icon-wrap">'+item.icon+'</div><div class="item-rarity '+item.rarity+'">'+item.rarity.toUpperCase()+'</div><div class="item-name">'+item.name+'</div><div class="item-desc">'+item.desc+'</div><div class="item-price">'+item.price.toLocaleString()+' POND</div>'+(owned ? '<div style="color: var(--accent-green); font-weight: bold;">✓ OWNED</div>' : '<button class="btn btn-pink btn-sm" onclick="quickBuyItem(\'tacticals\', \''+item.id+'\')">Buy</button>')+'</div>'; }).join(''); }
+        async function quickBuyItem(category, itemId) { const item = MARKETPLACE[category].find(function(i) { return i.id === itemId; }); if (!item || !wallet) return; if (balance < item.price) { showCustomModal('⚠️', 'Need '+item.price.toLocaleString()+' POND'); return; } const confirmed = await showCustomModal('💰 Purchase', 'Buy '+item.name+' for '+item.price.toLocaleString()+' POND?', [{text: 'Buy'}, {text: 'Cancel'}]); if (confirmed) { balance -= item.price; document.getElementById('walletBalBanner').textContent = Math.floor(balance).toLocaleString(); inventory[category].push(itemId); localStorage.setItem('bakeInventory', JSON.stringify(inventory)); addHistoryEntry('Bought '+item.name, item.price, 'burn'); showCustomModal('✅', item.name+' is yours!'); showUpsellItems(); } }
+        function proceedToGame() { if (selectedVehicle) { document.getElementById('marketplaceUpsell').style.display = 'none'; startGame(selectedVehicle.icon, selectedVehicle.hp, selectedVehicle.dmg); } }
+        
+        function startGame(icon, hp, dmg) { 
+            currentSessionId = wallet + '-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+            sessionEarnings = 0;
+            document.getElementById('vehicleSelect').style.display = 'none'; document.getElementById('gameArea').style.display = 'block'; canvas = document.getElementById('gameCanvas'); const dpr = window.devicePixelRatio || 1; canvas.width = window.innerWidth * dpr; canvas.height = window.innerHeight * dpr; canvas.style.width = window.innerWidth + 'px'; canvas.style.height = window.innerHeight + 'px'; ctx = canvas.getContext('2d'); ctx.scale(dpr, dpr); canvas.logicalWidth = window.innerWidth; canvas.logicalHeight = window.innerHeight; document.getElementById('playerName').textContent = username; document.getElementById('playerHP').textContent = hp; document.getElementById('playerMaxHP').textContent = hp; updateTacticalsDisplay(); initializeGame(icon, hp, dmg); showSarahMessage('start'); }
+        
+        function updateTacticalsDisplay() { const display = document.getElementById('tacticalsDisplay'); if (!inventory.tacticals || !inventory.tacticals.length) { display.innerHTML = '<div style="font-size: 14px; color: var(--text-muted);">No tacticals</div>'; return; } const names = { 'orbital': '🛸 Orbital', 'timeslow': '⏱️ Time Slow', 'turret': '🔫 Turret', 'airstrike': '✈️ Airstrike', 'shield': '🛡️ Shield', 'emp': '💣 EMP', 'heal': '❤️ Heal', 'decoy': '👻 Decoy' }; let html = '<div style="font-size: 14px; color: var(--accent-purple); margin-bottom: 5px;">TACTICALS:</div>'; inventory.tacticals.forEach(function(t, i) { const cd = player && player.tacticalCooldowns ? player.tacticalCooldowns[t] || 0 : 0; const cdSeconds = Math.ceil(cd / 60); const ready = cd === 0; const color = ready ? 'var(--accent-green)' : 'var(--accent-red)'; const status = ready ? 'READY' : cdSeconds+'s'; html += '<div style="font-size: 13px; color: '+color+'; margin: 2px 0;">['+(i+1)+'] '+(names[t] || t)+' - '+status+'</div>'; }); display.innerHTML = html; }
+        
+        function drawShape(ctx, shape, x, y, size, color) { ctx.fillStyle = color; ctx.beginPath(); switch(shape) { case 'rectangle': ctx.fillRect(x - size * 1.5, y - size * 0.7, size * 3, size * 1.4); return; case 'square': ctx.fillRect(x - size, y - size, size * 2, size * 2); return; case 'diamond': ctx.moveTo(x, y - size); ctx.lineTo(x + size, y); ctx.lineTo(x, y + size); ctx.lineTo(x - size, y); ctx.closePath(); break; case 'hexagon': for (let i = 0; i < 6; i++) { const angle = i * Math.PI / 3; ctx.lineTo(x + size * Math.cos(angle), y + size * Math.sin(angle)); } ctx.closePath(); break; case 'triangle': ctx.moveTo(x, y - size); ctx.lineTo(x + size, y + size); ctx.lineTo(x - size, y + size); ctx.closePath(); break; case 'oval': ctx.ellipse(x, y, size * 1.5, size, 0, 0, Math.PI * 2); break; case 'pentagon': for (let i = 0; i < 5; i++) { const angle = i * Math.PI * 2 / 5 - Math.PI / 2; ctx.lineTo(x + size * Math.cos(angle), y + size * Math.sin(angle)); } ctx.closePath(); break; case 'trapezoid': ctx.moveTo(x - size * 0.6, y - size); ctx.lineTo(x + size * 0.6, y - size); ctx.lineTo(x + size, y + size); ctx.lineTo(x - size, y + size); ctx.closePath(); break; default: ctx.arc(x, y, size, 0, Math.PI * 2); } ctx.fill(); }
+        
+        function resolveEnemyCollisions() { enemies.forEach(function(enemy) { for (let i = 0; i < walls.length; i++) { const wall = walls[i]; if (enemy.x - enemy.size < wall.x + wall.width && enemy.x + enemy.size > wall.x && enemy.y - enemy.size < wall.y + wall.height && enemy.y + enemy.size > wall.y) { const pushLeft = (enemy.x + enemy.size) - wall.x; const pushRight = (wall.x + wall.width) - (enemy.x - enemy.size); const pushUp = (enemy.y + enemy.size) - wall.y; const pushDown = (wall.y + wall.height) - (enemy.y - enemy.size); const minPush = Math.min(pushLeft, pushRight, pushUp, pushDown); if (minPush === pushLeft) enemy.x -= pushLeft; else if (minPush === pushRight) enemy.x += pushRight; else if (minPush === pushUp) enemy.y -= pushUp; else enemy.y += pushDown; } } }); for (let i = 0; i < enemies.length; i++) { for (let j = i + 1; j < enemies.length; j++) { const dx = enemies[j].x - enemies[i].x; const dy = enemies[j].y - enemies[i].y; const dist = Math.sqrt(dx * dx + dy * dy); const minDist = enemies[i].size + enemies[j].size + 5; if (dist < minDist && dist > 0) { const overlap = (minDist - dist) / 2; const pushX = (dx / dist) * overlap; const pushY = (dy / dist) * overlap; enemies[i].x -= pushX; enemies[i].y -= pushY; enemies[j].x += pushX; enemies[j].y += pushY; } } } }
+        
+        function triggerScreenShake(intensity, duration) { screenShakeIntensity = intensity; setTimeout(function() { screenShakeIntensity = 0; }, duration); }
+        
+        function triggerExplosionOverlay() { const overlay = document.getElementById('explosionOverlay'); overlay.style.opacity = '1'; setTimeout(function() { overlay.style.opacity = '0.7'; }, 100); setTimeout(function() { overlay.style.opacity = '0.4'; }, 200); setTimeout(function() { overlay.style.opacity = '0'; }, 400); }
+        
+        function createExplosionEffect(x, y, color, size) { for (let i = 0; i < 20; i++) { const angle = Math.random() * Math.PI * 2; const speed = 2 + Math.random() * 5; explosionEffects.push({ x: x, y: y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, size: size * (0.3 + Math.random() * 0.7), color: color, life: 60 + Math.random() * 30 }); } }
+        
+        function initializeGame(icon, hp, dmg) { const w = canvas.logicalWidth, h = canvas.logicalHeight; walls = [{ x: 150, y: 100, width: 120, height: 25 }, { x: w - 280, y: 180, width: 90, height: 30 }, { x: 100, y: h - 300, width: 140, height: 20 }, { x: w - 250, y: h - 280, width: 100, height: 35 }, { x: 300, y: h / 2 - 80, width: 80, height: 80 }, { x: w - 400, y: h / 2 + 30, width: 90, height: 60 }, { x: w / 2 - 150, y: 200, width: 70, height: 100 }, { x: w / 2 + 80, y: h - 350, width: 85, height: 70 }]; pickups = [{ x: 200, y: 200, type: 'health', icon: '💚', active: true }, { x: w - 200, y: 200, type: 'damage', icon: '💥', active: true }, { x: 200, y: h - 300, type: 'speed', icon: '⚡', active: true }, { x: w - 200, y: h - 300, type: 'shield', icon: '🛡️', active: true }, { x: w / 2, y: 150, type: 'health', icon: '💚', active: true }, { x: w / 2, y: h - 250, type: 'damage', icon: '💥', active: true }]; player = { x: w / 2, y: h / 2, vx: 0, vy: 0, angle: 0, hp: hp, maxHp: hp, damage: dmg, baseDamage: dmg, size: 25, icon: icon, speed: 4, baseSpeed: 4, shield: false, shieldTime: 0, tacticalCooldowns: {} }; inventory.tacticals.forEach(function(t) { player.tacticalCooldowns[t] = 0; }); enemies = []; for (let i = 0; i < 7; i++) spawnEnemy(); bullets = []; keys = {}; kills = 0; streak = 0; pot = 1000; aliveCount = 8; gameStartTime = Date.now(); explosionEffects = []; activeTurrets = []; document.getElementById('playerBAKE').textContent = Math.floor(balance).toLocaleString(); canvas.addEventListener('mousemove', handleMouseMove); canvas.addEventListener('mousedown', handleMouseDown); canvas.addEventListener('mouseup', handleMouseUp); window.addEventListener('keydown', function(e) { keys[e.key.toLowerCase()] = true; }); window.addEventListener('keyup', function(e) { keys[e.key.toLowerCase()] = false; }); gameLoop = setInterval(update, 1000/60); }
+        
+        function spawnEnemy() { const w = canvas.logicalWidth, h = canvas.logicalHeight; const edge = Math.floor(Math.random() * 4); let x, y; if (edge === 0) { x = Math.random() * w; y = -40; } else if (edge === 1) { x = w + 40; y = Math.random() * h; } else if (edge === 2) { x = Math.random() * w; y = h + 40; } else { x = -40; y = Math.random() * h; } const hpVal = 200 + Math.random() * 200; const shapeIndex = Math.floor(Math.random() * ENEMY_SHAPES.length); enemies.push({ x: x, y: y, vx: 0, vy: 0, hp: hpVal, maxHp: hpVal, damage: 20 + Math.random() * 20, size: 25, name: ENEMY_NAMES[Math.floor(Math.random() * ENEMY_NAMES.length)], color: ENEMY_COLORS[shapeIndex % ENEMY_COLORS.length], shape: ENEMY_SHAPES[shapeIndex], speed: 1.5 + Math.random(), shootCooldown: Math.random() * 60, lives: 5 }); }
+        
+        function handleMouseMove(e) { const rect = canvas.getBoundingClientRect(); mouse.x = (e.clientX - rect.left) * (canvas.logicalWidth / rect.width); mouse.y = (e.clientY - rect.top) * (canvas.logicalHeight / rect.height); }
+        function handleMouseDown() { mouse.clicked = true; }
+        function handleMouseUp() { mouse.clicked = false; }
+        
+        function shoot() { const dx = mouse.x - player.x, dy = mouse.y - player.y, dist = Math.sqrt(dx*dx + dy*dy); if (dist > 0) bullets.push({ x: player.x, y: player.y, vx: (dx/dist) * 12, vy: (dy/dist) * 12, damage: player.damage, isPlayer: true, size: 5 }); }
+        
+        function checkWallCollision(obj, newX, newY) { for (let i = 0; i < walls.length; i++) { const wall = walls[i]; if (newX - obj.size < wall.x + wall.width && newX + obj.size > wall.x && newY - obj.size < wall.y + wall.height && newY + obj.size > wall.y) return true; } return false; }
+        
+        function update() { gameTime = Math.floor((Date.now() - gameStartTime) / 1000); document.getElementById('gameTime').textContent = Math.floor(gameTime / 60) + ':' + (gameTime % 60).toString().padStart(2, '0'); 
+            for (let key in player.tacticalCooldowns) { if (player.tacticalCooldowns[key] > 0) player.tacticalCooldowns[key]--; }
+            inventory.tacticals.forEach(function(tactical, slot) { const key = (slot + 1).toString(); if (keys[key] && player.tacticalCooldowns[tactical] === 0) { keys[key] = false; const notif = document.getElementById('killNotif'); if (tactical === 'orbital') { enemies.forEach(function(e) { e.hp -= 300; }); player.tacticalCooldowns[tactical] = 10800; notif.innerHTML = '🛸 ORBITAL LASER!'; notif.style.display = 'block'; triggerScreenShake(20, 1000); triggerExplosionOverlay(); enemies.forEach(function(e) { createExplosionEffect(e.x, e.y, '#ff4400', 40); }); setTimeout(function() { notif.style.display = 'none'; }, 2000); } else if (tactical === 'airstrike') { enemies.forEach(function(e) { e.hp -= 200; }); player.tacticalCooldowns[tactical] = 7200; notif.innerHTML = '✈️ AIRSTRIKE INCOMING!'; notif.style.display = 'block'; triggerScreenShake(15, 800); triggerExplosionOverlay(); for (let i = 0; i < 5; i++) { setTimeout(function() { const x = Math.random() * canvas.logicalWidth; const y = Math.random() * canvas.logicalHeight; createExplosionEffect(x, y, '#ff6600', 50); triggerScreenShake(10, 200); }, i * 150); } setTimeout(function() { notif.style.display = 'none'; }, 2000); } else if (tactical === 'shield') { player.shield = true; player.shieldTime = 600; player.tacticalCooldowns[tactical] = 5400; notif.innerHTML = '🛡️ SHIELD ACTIVE!'; notif.style.display = 'block'; setTimeout(function() { notif.style.display = 'none'; }, 2000); } else if (tactical === 'heal') { const oldHp = player.hp; player.hp = Math.min(player.maxHp, player.hp + 100); document.getElementById('playerHP').textContent = Math.floor(player.hp); player.tacticalCooldowns[tactical] = 3600; notif.innerHTML = '❤️ HEALED +' + Math.floor(player.hp - oldHp) + ' HP'; notif.style.display = 'block'; setTimeout(function() { notif.style.display = 'none'; }, 2000); } else if (tactical === 'emp') { enemies.forEach(function(e) { const origSpeed = e.speed; e.speed *= 0.2; setTimeout(function() { e.speed = origSpeed; }, 5000); }); player.tacticalCooldowns[tactical] = 2700; notif.innerHTML = '💣 EMP BLAST!'; notif.style.display = 'block'; triggerScreenShake(8, 300); setTimeout(function() { notif.style.display = 'none'; }, 2000); } else if (tactical === 'turret') { const turret = { x: player.x + 80, y: player.y - 80, active: true, cooldown: 0 }; activeTurrets.push(turret); const turretInterval = setInterval(function() { if (!turret.active) { clearInterval(turretInterval); return; } turret.cooldown--; if (turret.cooldown <= 0) { enemies.forEach(function(e) { const dx = e.x - turret.x, dy = e.y - turret.y, dist = Math.sqrt(dx*dx + dy*dy); if (dist < 400) { e.hp -= 20; bullets.push({ x: turret.x, y: turret.y, vx: (dx/dist) * 12, vy: (dy/dist) * 12, damage: 0, isPlayer: true, size: 5, color: '#fbbf24' }); } }); turret.cooldown = 30; } }, 1000/60); setTimeout(function() { turret.active = false; const idx = activeTurrets.indexOf(turret); if (idx > -1) activeTurrets.splice(idx, 1); }, 10000); player.tacticalCooldowns[tactical] = 3600; notif.innerHTML = '🔫 TURRET DEPLOYED!'; notif.style.display = 'block'; setTimeout(function() { notif.style.display = 'none'; }, 2000); } else if (tactical === 'timeslow') { const origSpeed = player.speed; player.speed *= 2.5; setTimeout(function() { player.speed = origSpeed; }, 8000); player.tacticalCooldowns[tactical] = 9000; notif.innerHTML = '⏱️ TIME DISTORTION!'; notif.style.display = 'block'; setTimeout(function() { notif.style.display = 'none'; }, 1500); } else if (tactical === 'decoy') { const decoy = { x: player.x + 100, y: player.y, hp: 50, active: true }; enemies.forEach(function(e) { e.target = decoy; }); setTimeout(function() { decoy.active = false; enemies.forEach(function(e) { e.target = null; }); }, 5000); player.tacticalCooldowns[tactical] = 1800; notif.innerHTML = '👻 DECOY DEPLOYED!'; notif.style.display = 'block'; setTimeout(function() { notif.style.display = 'none'; }, 2000); } } });
+            if (mouse.clicked && Math.random() < 0.3) shoot(); if (player.shield) { player.shieldTime--; if (player.shieldTime <= 0) player.shield = false; }
+            pickups.forEach(function(pickup) { if (!pickup.active) return; const dx = player.x - pickup.x, dy = player.y - pickup.y, dist = Math.sqrt(dx*dx + dy*dy); if (dist < player.size + 20) { pickup.active = false; if (pickup.type === 'health') { player.hp = Math.min(player.maxHp, player.hp + 50); document.getElementById('playerHP').textContent = Math.floor(player.hp); showSarahMessage('pickup_health'); } else if (pickup.type === 'damage') { player.damage = player.baseDamage * 2; showSarahMessage('pickup_damage'); setTimeout(function() { player.damage = player.baseDamage; }, 10000); } else if (pickup.type === 'speed') { player.speed = player.baseSpeed * 1.5; showSarahMessage('pickup_speed'); setTimeout(function() { player.speed = player.baseSpeed; }, 8000); } else if (pickup.type === 'shield') { player.shield = true; player.shieldTime = 300; showSarahMessage('pickup_shield'); } setTimeout(function() { pickup.active = true; }, 20000); } });
+            let newX = player.x, newY = player.y; if (keys['w'] || keys['arrowup']) newY -= player.speed; if (keys['s'] || keys['arrowdown']) newY += player.speed; if (keys['a'] || keys['arrowleft']) newX -= player.speed; if (keys['d'] || keys['arrowright']) newX += player.speed; if (!checkWallCollision(player, newX, player.y)) player.x = Math.max(player.size, Math.min(canvas.logicalWidth - player.size, newX)); if (!checkWallCollision(player, player.x, newY)) player.y = Math.max(player.size, Math.min(canvas.logicalHeight - player.size, newY)); player.angle = Math.atan2(mouse.y - player.y, mouse.x - player.x);
+            enemies.forEach(function(enemy, index) { if (!enemy.target || Math.random() < 0.01) { enemy.target = Math.random() < 0.8 && enemies.length > 1 ? enemies.filter(function(_, i) { return i !== index; })[Math.floor(Math.random() * (enemies.length - 1))] : player; } const dx = enemy.target.x - enemy.x, dy = enemy.target.y - enemy.y, dist = Math.sqrt(dx*dx + dy*dy); if (dist > 0) { let newX = enemy.x + (dx/dist) * enemy.speed, newY = enemy.y + (dy/dist) * enemy.speed; if (!checkWallCollision(enemy, newX, enemy.y)) enemy.x = newX; if (!checkWallCollision(enemy, enemy.x, newY)) enemy.y = newY; } enemy.shootCooldown--; if (enemy.shootCooldown <= 0 && dist < 400) { if (dist > 0) bullets.push({ x: enemy.x, y: enemy.y, vx: (dx/dist) * 10, vy: (dy/dist) * 10, damage: enemy.damage, isPlayer: false, owner: enemy, size: 4 }); enemy.shootCooldown = 40 + Math.random() * 40; } }); resolveEnemyCollisions();
+            updateBullets();
+            explosionEffects = explosionEffects.filter(function(e) { e.x += e.vx; e.y += e.vy; e.vx *= 0.95; e.vy *= 0.95; e.life--; e.size *= 0.98; return e.life > 0; }); updateTacticalsDisplay(); draw(); }
+        
+        function updateBullets() {
+            bullets = bullets.filter(function(bullet) { 
+                bullet.x += bullet.vx; 
+                bullet.y += bullet.vy; 
+                for (let i = 0; i < walls.length; i++) { 
+                    const wall = walls[i]; 
+                    if (bullet.x > wall.x && bullet.x < wall.x + wall.width && bullet.y > wall.y && bullet.y < wall.y + wall.height) return false; 
+                } 
+                if (bullet.isPlayer) { 
+                    for (let i = enemies.length - 1; i >= 0; i--) { 
+                        const enemy = enemies[i]; 
+                        const dx = bullet.x - enemy.x, dy = bullet.y - enemy.y, dist = Math.sqrt(dx*dx + dy*dy); 
+                        if (dist < enemy.size) { 
+                            enemy.hp -= bullet.damage; 
+                            if (enemy.hp <= 0) { 
+                                enemy.lives--; 
+                                createExplosionEffect(enemy.x, enemy.y, enemy.color, 30); 
+                                if (enemy.lives > 0) { 
+                                    enemy.hp = 200 + Math.random() * 200; 
+                                    enemy.maxHp = enemy.hp; 
+                                    const edge = Math.floor(Math.random() * 4); 
+                                    if (edge === 0) { enemy.x = Math.random() * canvas.logicalWidth; enemy.y = -40; } 
+                                    else if (edge === 1) { enemy.x = canvas.logicalWidth + 40; enemy.y = Math.random() * canvas.logicalHeight; } 
+                                    else if (edge === 2) { enemy.x = Math.random() * canvas.logicalWidth; enemy.y = canvas.logicalHeight + 40; } 
+                                    else { enemy.x = -40; enemy.y = Math.random() * canvas.logicalHeight; } 
+                                } else { 
+                                    enemies.splice(i, 1); 
+                                    aliveCount--; 
+                                    document.getElementById('aliveCount').textContent = aliveCount; 
+                                } 
+                                kills++; streak++; 
+                                let playerBake = 100; 
+                                sessionEarnings += playerBake;
+                                balance += playerBake; 
+                                document.getElementById('playerBAKE').textContent = Math.floor(balance).toLocaleString(); 
+                                addHistoryEntry('Kill reward', playerBake, 'earn'); 
+                                pot += 100; 
+                                document.getElementById('currentPot').textContent = pot.toLocaleString(); 
+                                const notif = document.getElementById('killNotif'); 
+                                notif.innerHTML = '🎯 KILL! +' + playerBake + ' POND'; 
+                                notif.style.display = 'block'; 
+                                setTimeout(function() { notif.style.display = 'none'; }, 1500); 
+                                document.getElementById('killCount').textContent = kills; 
+                                document.getElementById('streakCount').textContent = streak; 
+                                if (kills === 1) showSarahMessage('kill1'); 
+                                else if (kills === 3) showSarahMessage('kill3'); 
+                                else if (kills === 5) showSarahMessage('kill5'); 
+                                else if (kills === 8) showSarahMessage('kill8'); 
+                                else if (kills === 10) showSarahMessage('kill10'); 
+                                else if (kills === 15) showSarahMessage('kill15'); 
+                                else if (kills === 20) showSarahMessage('kill20'); 
+                                if (aliveCount === 2) showSarahMessage('lastStanding'); 
+                                if (aliveCount === 1) endGame(true); 
+                            } 
+                            return false; 
+                        } 
+                    } 
+                } else { 
+                    const dxP = bullet.x - player.x, dyP = bullet.y - player.y, distP = Math.sqrt(dxP*dxP + dyP*dyP); 
+                    if (distP < player.size) { 
+                        if (!player.shield) { 
+                            player.hp -= bullet.damage * 0.5; 
+                            streak = 0; 
+                            document.getElementById('playerHP').textContent = Math.max(0, Math.floor(player.hp)); 
+                            document.getElementById('streakCount').textContent = 0; 
+                            if (player.hp < player.maxHp * 0.3) showSarahMessage('lowHP'); 
+                            if (player.hp <= 0) endGame(false); 
+                        } 
+                        return false; 
+                    } 
+                    for (let i = enemies.length - 1; i >= 0; i--) { 
+                        const enemy = enemies[i]; 
+                        if (bullet.owner === enemy) continue; 
+                        const dx = bullet.x - enemy.x, dy = bullet.y - enemy.y, dist = Math.sqrt(dx*dx + dy*dy); 
+                        if (dist < enemy.size) { 
+                            enemy.hp -= bullet.damage * 0.5; 
+                            if (enemy.hp <= 0) { 
+                                enemies.splice(i, 1); 
+                                aliveCount--; 
+                                document.getElementById('aliveCount').textContent = aliveCount; 
+                                if (aliveCount === 2) showSarahMessage('lastStanding'); 
+                                if (aliveCount === 1) endGame(true); 
+                            } 
+                            return false; 
+                        } 
+                    } 
+                } 
+                return bullet.x > 0 && bullet.x < canvas.logicalWidth && bullet.y > 0 && bullet.y < canvas.logicalHeight; 
+            });
         }
         
-        function showCustomModal(title, message, buttons) { 
-            if (!buttons) buttons = [{text: 'OK'}]; 
-            return new Promise(function(resolve) { 
-                closeCurrentModal(); 
-                const modal = document.createElement('div'); 
-                modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;justify-content:center;align-items:center;z-index:10001;backdrop-filter:blur(8px);'; 
-                let btnHtml = buttons.map((b, i) => 
-                    `<button id="modalBtn${i}" class="btn ${i === 0 ? 'btn-primary' : 'btn-secondary'}">${b.text}</button>`
-                ).join(''); 
-                modal.innerHTML = `<div class="cyber-card glow" style="max-width: 480px; text-align: center;">
-                    <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-                    <div class="font-display" style="font-size: 22px; margin-bottom: 16px;">${title}</div>
-                    <div style="color: var(--text-secondary); font-size: 15px; margin-bottom: 28px; line-height: 1.6; white-space: pre-line;">${message}</div>
-                    <div class="flex flex-center gap-2">${btnHtml}</div>
-                </div>`; 
-                document.body.appendChild(modal); 
-                currentModal = modal; 
-                buttons.forEach(function(b, i) { 
-                    document.getElementById('modalBtn'+i).onclick = function() { 
-                        closeCurrentModal(); 
-                        if (b.onClick) b.onClick(); 
-                        resolve(i === 0); 
-                    }; 
-                }); 
-            }); 
-        }
-
-        // ==================== CREDITS ====================
-        function updateCreditsDisplay() { 
-            ['creditsDisplay', 'gameCredits', 'inGameCredits'].forEach(id => { 
-                const el = document.getElementById(id); 
-                if (el) el.textContent = gameCredits; 
-            }); 
-            localStorage.setItem('gameCredits', gameCredits.toString()); 
-        }
-
-        async function buyCredits(amount) { 
-            if (!wallet) { await showCustomModal('⚠️ Wallet Required', 'Connect wallet first'); return; } 
-            if (sgbBalance < amount) { await showCustomModal('⚠️ Insufficient SGB', 'You need '+amount+' SGB'); return; } 
-            try { 
-                const confirmed = await showCustomModal('🎟️ Buy '+amount+' Credits', 'Pay '+amount+' SGB?', [{text: 'Buy'}, {text: 'Cancel'}]); 
-                if (!confirmed) return; 
-                showCustomModal('⏳ Processing', 'Check MetaMask...'); 
-                const tx = await signer.sendTransaction({ to: CONTRACTS.POOL_CONTRACT, value: ethers.utils.parseEther(amount.toString()) }); 
-                await tx.wait(); 
-                const newSgbBalance = await provider.getBalance(wallet); 
-                sgbBalance = parseFloat(ethers.utils.formatEther(newSgbBalance)); 
-                document.getElementById('walletSGBBanner').textContent = sgbBalance.toFixed(2); 
-                gameCredits += amount; 
-                updateCreditsDisplay(); 
-                await showCustomModal('✅ Credits Purchased', 'You have '+gameCredits+' credits'); 
-            } catch (error) { 
-                await showCustomModal('❌ Failed', error.message); 
-            } 
-        }
-
-        // ==================== WALLET ====================
-        async function connectWallet() { 
-            const walletBtn = document.getElementById('walletBtn'); 
-            try { 
-                walletBtn.disabled = true; 
-                walletBtn.innerHTML = '⏳ Connecting...'; 
-                provider = new ethers.providers.Web3Provider(window.ethereum); 
-                await provider.send("eth_requestAccounts", []); 
-                signer = provider.getSigner(); 
-                pondContract = new ethers.Contract(CONTRACTS.POND_TOKEN, ERC20_ABI, signer); 
-                poolContract = new ethers.Contract(CONTRACTS.POOL_CONTRACT, POOL_ABI, signer); 
-                wallet = await signer.getAddress(); 
-                const pondBalance = await pondContract.balanceOf(wallet); 
-                const sgbBalanceWei = await provider.getBalance(wallet); 
-                balance = parseFloat(ethers.utils.formatEther(pondBalance)); 
-                sgbBalance = parseFloat(ethers.utils.formatEther(sgbBalanceWei)); 
-                
-                walletBtn.textContent = '✓ ' + wallet.substr(0, 6) + '...' + wallet.substr(-4); 
-                walletBtn.classList.add('wallet-connected'); 
-                walletBtn.onclick = null; 
-                
-                document.getElementById('walletBanner').style.display = 'block';
-                document.getElementById('walletAddrBanner').textContent = wallet.substr(0, 6) + '...' + wallet.substr(-4);
-                document.getElementById('walletBalBanner').textContent = Math.floor(balance).toLocaleString(); 
-                document.getElementById('walletSGBBanner').textContent = sgbBalance.toFixed(2); 
-                
-                document.getElementById('gameSetup').style.display = 'block'; 
-                document.getElementById('buyWalletWarning').style.display = 'none'; 
-                document.getElementById('bulkPurchaseSection').style.display = 'block'; 
-                document.getElementById('marketplaceWalletWarning').style.display = 'none'; 
-                document.getElementById('lpDashboard').style.display = 'block';
-                
-                updateCreditsDisplay(); 
-                await updatePoolData();
-                await updateLPDashboard();
-                await checkNFTBonus();
-            } catch (e) { 
-                showCustomModal('❌ Connection Failed', e.message); 
-                walletBtn.disabled = false; 
-                walletBtn.innerHTML = '🔗 Connect Wallet'; 
-            } 
-        }
-
-        async function addSongbirdNetwork() {
-            try {
-                await window.ethereum.request({
-                    method: 'wallet_addEthereumChain',
-                    params: [{
-                        chainId: '0x13',
-                        chainName: 'Songbird',
-                        nativeCurrency: { name: 'Songbird', symbol: 'SGB', decimals: 18 },
-                        rpcUrls: ['https://songbird-api.flare.network/ext/C/rpc'],
-                        blockExplorerUrls: ['https://songbird-explorer.flare.network']
-                    }]
-                });
-            } catch (e) {
-                showCustomModal('❌ Error', e.message);
-            }
-        }
-
-        async function importBAKEToken() {
-            try {
-                await window.ethereum.request({
-                    method: 'wallet_watchAsset',
-                    params: { type: 'ERC20', options: { address: CONTRACTS.POND_TOKEN, symbol: 'POND', decimals: 18 } }
-                });
-            } catch (e) {
-                showCustomModal('❌ Error', e.message);
-            }
-        }
-
-        // ==================== POOL DATA ====================
-        async function updatePoolData() {
-            try {
-                const tempProvider = wallet ? provider : new ethers.providers.JsonRpcProvider(SONGBIRD_RPC);
-                const tempPoolContract = new ethers.Contract(CONTRACTS.POOL_CONTRACT, ["function reserveSGB() view returns (uint256)", "function reservePOND() view returns (uint256)"], tempProvider);
-                const wsgbReserve = await tempPoolContract.reserveSGB();
-                const pondReserve = await tempPoolContract.reservePOND();
-                const wsgbAmount = parseFloat(ethers.utils.formatEther(wsgbReserve));
-                const pondAmount = parseFloat(ethers.utils.formatEther(pondReserve));
-                
-                document.getElementById('poolWsgb').textContent = wsgbAmount.toFixed(2);
-                document.getElementById('poolBake').textContent = Math.floor(pondAmount).toLocaleString();
-                
-                if (wsgbAmount > 0 && pondAmount > 0) {
-                    const price = wsgbAmount / pondAmount;
-                    document.getElementById('pondPrice').textContent = price.toFixed(6);
-                    const priceUSD = price * sgbPriceUSD;
-                    document.getElementById('pondPriceUSD').textContent = priceUSD.toFixed(6);
-                    const marketCap = priceUSD * 11900000000;
-                    document.getElementById('marketCap').textContent = marketCap.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0});
-                    document.getElementById('marketcapLP').textContent = marketCap.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0});
-                    
-                    const priceChange = ((price - 0.000003112356) / 0.000003112356) * 100;
-                    const changeEl = document.getElementById('allTimeChange');
-                    const changePercentEl = document.getElementById('priceChangePercent');
-                    changeEl.textContent = 'All-Time: ' + (priceChange >= 0 ? '+' : '') + priceChange.toFixed(2) + '%';
-                    changeEl.style.color = priceChange >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
-                    changePercentEl.textContent = (priceChange >= 0 ? '+' : '') + priceChange.toFixed(2);
-                }
-            } catch (e) {
-                console.log('Pool data error:', e);
-            }
-        }
-
-        async function loadPoolDataWithoutWallet() {
-            await updatePoolData();
-        }
-
-        async function updateLPDashboard() {
-            if (!wallet || !poolContract) return;
-            try {
-                const position = await poolContract.positions(wallet);
-                const totalShares = await poolContract.totalShares();
-                
-                const sgbDeposited = parseFloat(ethers.utils.formatEther(position.sgbDeposited));
-                const pondDeposited = parseFloat(ethers.utils.formatEther(position.pondDeposited));
-                const shares = parseFloat(ethers.utils.formatEther(position.shares));
-                const total = parseFloat(ethers.utils.formatEther(totalShares));
-                const poolPercent = total > 0 ? (shares / total * 100) : 0;
-                
-                document.getElementById('lpSgbDeposited').textContent = sgbDeposited.toFixed(2);
-                document.getElementById('lpBakeDeposited').textContent = Math.floor(pondDeposited).toLocaleString();
-                document.getElementById('lpPoolPercent').textContent = poolPercent.toFixed(4) + '%';
-                
-                const lockTier = position.lockTier.toNumber();
-                const multipliers = ['1x', '1.5x', '2.5x'];
-                document.getElementById('lpMultiplier').textContent = multipliers[lockTier] || '1x';
-                
-                const lockEnd = position.lockEnd.toNumber() * 1000;
-                const now = Date.now();
-                if (lockEnd > now) {
-                    const daysLeft = Math.ceil((lockEnd - now) / (1000 * 60 * 60 * 24));
-                    document.getElementById('lpLockStatus').textContent = daysLeft + ' days locked';
-                    document.getElementById('lpUnlockSection').style.display = 'none';
-                } else if (shares > 0) {
-                    document.getElementById('lpLockStatus').textContent = 'Unlocked';
-                    document.getElementById('lpUnlockSection').style.display = 'block';
-                }
-                
-                const pendingPond = parseFloat(ethers.utils.formatEther(position.pendingPond));
-                const pendingSgb = parseFloat(ethers.utils.formatEther(position.pendingSgb));
-                document.getElementById('lpPendingBake').textContent = Math.floor(pendingPond).toLocaleString();
-                document.getElementById('lpPendingSgb').textContent = pendingSgb.toFixed(4);
-                
-            } catch (e) {
-                console.log('LP dashboard error:', e);
-            }
-        }
-
-        async function checkNFTBonus() {
-            if (!wallet) return;
-            try {
-                const tempProvider = new ethers.providers.JsonRpcProvider(SONGBIRD_RPC);
-                let bonus = 0;
-                
-                const stoadz = new ethers.Contract(CONTRACTS.STOADZ_NFT, NFT_ABI, tempProvider);
-                const stoadzBal = await stoadz.balanceOf(wallet);
-                if (stoadzBal.gt(0)) bonus += 0.1;
-                
-                document.getElementById('userNftBonus').textContent = '+' + bonus.toFixed(3) + 'x';
-            } catch (e) {
-                console.log('NFT check error:', e);
-            }
-        }
-
-        // ==================== LP ACTIONS ====================
-        async function addLiquidity() {
-            if (!wallet) { showCustomModal('⚠️', 'Connect wallet first'); return; }
-            const sgbAmount = parseFloat(document.getElementById('wsgbInput').value);
-            const pondAmount = parseFloat(document.getElementById('bakeRequired').value);
-            if (!sgbAmount || sgbAmount <= 0) { showCustomModal('⚠️', 'Enter SGB amount'); return; }
-            if (!pondAmount || pondAmount <= 0) { showCustomModal('⚠️', 'POND amount required'); return; }
+        function draw() { const w = canvas.logicalWidth, h = canvas.logicalHeight; if (screenShakeIntensity > 0) { ctx.save(); ctx.translate((Math.random() - 0.5) * screenShakeIntensity, (Math.random() - 0.5) * screenShakeIntensity); } const gradient = ctx.createLinearGradient(0, 0, 0, h); gradient.addColorStop(0, '#0a0e1a'); gradient.addColorStop(1, '#0f1419'); ctx.fillStyle = gradient; ctx.fillRect(0, 0, w, h); ctx.strokeStyle = '#1a1f2e'; ctx.lineWidth = 1; for (let i = 0; i < w; i += 40) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, h); ctx.stroke(); } for (let i = 0; i < h; i += 40) { ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(w, i); ctx.stroke(); } ctx.fillStyle = '#334155'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 2; walls.forEach(function(wall) { ctx.fillRect(wall.x, wall.y, wall.width, wall.height); ctx.strokeRect(wall.x, wall.y, wall.width, wall.height); }); pickups.forEach(function(pickup) { if (!pickup.active) return; ctx.save(); ctx.translate(pickup.x, pickup.y); const pulseSize = 25 + Math.sin(Date.now() / 200) * 5; ctx.fillStyle = 'rgba(251, 191, 36, 0.3)'; ctx.beginPath(); ctx.arc(0, 0, pulseSize, 0, Math.PI * 2); ctx.fill(); ctx.font = '32px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(pickup.icon, 0, 0); ctx.restore(); });
+            enemies.forEach(function(enemy) { ctx.save(); ctx.translate(enemy.x, enemy.y); drawShape(ctx, enemy.shape, 0, 0, enemy.size, enemy.color); ctx.fillStyle = '#ffffff'; ctx.font = 'bold 8px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(enemy.name, 0, 0); const barWidth = 50, barHeight = 5, hpPercent = enemy.hp / enemy.maxHp; ctx.fillStyle = '#1e293b'; ctx.fillRect(-barWidth/2, -enemy.size - 12, barWidth, barHeight); ctx.fillStyle = hpPercent > 0.6 ? '#22c55e' : hpPercent > 0.3 ? '#fbbf24' : '#ef4444'; ctx.fillRect(-barWidth/2, -enemy.size - 12, barWidth * hpPercent, barHeight); ctx.restore(); });
+            activeTurrets.forEach(function(turret) { if (!turret.active) return; ctx.fillStyle = '#ef4444'; ctx.fillRect(turret.x - 25, turret.y - 25, 50, 50); ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 4; ctx.strokeRect(turret.x - 25, turret.y - 25, 50, 50); ctx.fillStyle = '#ffffff'; ctx.font = 'bold 32px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('🔫', turret.x, turret.y); });
+            ctx.save(); ctx.translate(player.x, player.y); if (player.shield) { const shieldPulse = 35 + Math.sin(Date.now() / 100) * 3; ctx.strokeStyle = 'rgba(59, 130, 246, 0.8)'; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(0, 0, shieldPulse, 0, Math.PI * 2); ctx.stroke(); ctx.strokeStyle = 'rgba(59, 130, 246, 0.4)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(0, 0, shieldPulse + 5, 0, Math.PI * 2); ctx.stroke(); } ctx.rotate(player.angle); let playerColor = '#10b981'; if (inventory.skins.includes('gold')) playerColor = '#fbbf24'; else if (inventory.skins.includes('chrome')) playerColor = '#e5e7eb'; else if (inventory.skins.includes('neon')) playerColor = '#a855f7'; ctx.fillStyle = playerColor; ctx.fillRect(-player.size/2, -player.size/2, player.size, player.size); ctx.fillStyle = '#ffffff'; ctx.font = 'bold 10px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(username, 0, 0); const barWidth = 50, barHeight = 5, hpPercent = player.hp / player.maxHp; ctx.rotate(-player.angle); ctx.fillStyle = '#1e293b'; ctx.fillRect(-barWidth/2, -player.size - 12, barWidth, barHeight); ctx.fillStyle = hpPercent > 0.6 ? '#22c55e' : hpPercent > 0.3 ? '#fbbf24' : '#ef4444'; ctx.fillRect(-barWidth/2, -player.size - 12, barWidth * hpPercent, barHeight); ctx.restore();
+            bullets.forEach(function(bullet) { ctx.fillStyle = bullet.color || (bullet.isPlayer ? '#3b82f6' : '#ef4444'); ctx.beginPath(); ctx.arc(bullet.x, bullet.y, bullet.size, 0, Math.PI * 2); ctx.fill(); });
+            explosionEffects.forEach(function(e) { ctx.globalAlpha = e.life / 60; ctx.fillStyle = e.color; ctx.beginPath(); ctx.arc(e.x, e.y, e.size, 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = 1; }); if (screenShakeIntensity > 0) { ctx.restore(); } }
+        
+        async function endGame(won) { clearInterval(gameLoop); canvas.removeEventListener('mousemove', handleMouseMove); canvas.removeEventListener('mousedown', handleMouseDown); canvas.removeEventListener('mouseup', handleMouseUp); if (won) { showSarahMessage('victory'); balance += pot; sessionEarnings += pot; totalKills += kills; document.getElementById('walletBalBanner').textContent = Math.floor(balance).toLocaleString(); addHistoryEntry('Victory! Won pot', pot, 'earn'); leaderboard.push({ name: username, bake: pot, kills: kills, date: new Date().toISOString() }); leaderboard.sort(function(a, b) { return b.bake - a.bake; }); leaderboard = leaderboard.slice(0, 20); localStorage.setItem('bakeLeaderboard', JSON.stringify(leaderboard)); updateLeaderboardDisplay(); await updatePoolData(); await claimSessionRewards(); setTimeout(async function() { const playAgain = await showCustomModal('🏆 VICTORY!', 'You won '+pot.toLocaleString()+' POND!\n\nKills: '+kills+'\nTime: '+Math.floor(gameTime/60)+':'+(gameTime%60).toString().padStart(2,'0'), [{text: 'Play Again'}, {text: 'Exit'}]); lives = 5; document.getElementById('livesCount').textContent = lives; totalKills = 0; document.getElementById('gameArea').style.display = 'none'; if (playAgain) { document.getElementById('vehicleSelect').style.display = 'block'; } else { document.getElementById('gameSetup').style.display = 'block'; switchTab('play'); } }, 2000); } else { lives--; document.getElementById('livesCount').textContent = lives; totalKills += kills; if (lives > 0) { await showCustomModal('💀 YOU DIED!', 'Lives remaining: '+lives+'/5\n\nRespawning...', [{text: 'Continue'}]); respawnPlayer(); } else { await claimSessionRewards(); const result = await showCustomModal('💀 GAME OVER!', 'Total Kills: '+totalKills+'\nTime: '+Math.floor(gameTime/60)+':'+(gameTime%60).toString().padStart(2,'0')+'\n\nCredits: '+gameCredits+'\nSGB Balance: '+sgbBalance.toFixed(2), [{text: 'Buy 1 Credit (1 SGB)'}, {text: 'Buy 5 Credits (5 SGB)'}, {text: 'Exit'}]); if (result) { const success = await buyCreditsInGame(1); if (success) { lives = 5; document.getElementById('livesCount').textContent = lives; totalKills = 0; gameCredits--; updateCreditsDisplay(); respawnPlayer(); return; } } else { const buyFive = await showCustomModal('Buy 5 Credits?', 'Get 5 credits for 5 SGB?', [{text: 'Buy 5'}, {text: 'Exit'}]); if (buyFive) { const success = await buyCreditsInGame(5); if (success) { lives = 5; document.getElementById('livesCount').textContent = lives; totalKills = 0; gameCredits--; updateCreditsDisplay(); respawnPlayer(); return; } } } lives = 5; document.getElementById('livesCount').textContent = lives; totalKills = 0; document.getElementById('gameArea').style.display = 'none'; document.getElementById('gameSetup').style.display = 'block'; } } }
+        
+        function respawnPlayer() { player.x = canvas.logicalWidth / 2; player.y = canvas.logicalHeight / 2; player.hp = player.maxHp; player.vx = 0; player.vy = 0; player.shield = false; player.shieldTime = 0; document.getElementById('playerHP').textContent = player.maxHp; canvas.addEventListener('mousemove', handleMouseMove); canvas.addEventListener('mousedown', handleMouseDown); canvas.addEventListener('mouseup', handleMouseUp); showSarahMessage('start'); gameLoop = setInterval(update, 1000/60); }
+        
+        function toggleFirstDepositor() { const isFirst = document.getElementById('isFirstDepositor').checked; const bakeInput = document.getElementById('bakeRequired'); if (isFirst) { bakeInput.readOnly = false; bakeInput.style.color = 'var(--text-primary)'; bakeInput.value = ''; } else { bakeInput.readOnly = true; bakeInput.style.color = 'var(--accent-gold)'; document.getElementById('wsgbInput').dispatchEvent(new Event('input')); } }
+        
+        function showCategory(category) { document.querySelectorAll('.category-tab-btn').forEach(function(btn) { btn.classList.remove('active'); }); if (event && event.target) { event.target.classList.add('active'); } const items = MARKETPLACE[category]; const container = document.getElementById('marketplaceItems'); const rarityColors = { legendary: 'var(--accent-gold)', epic: 'var(--accent-purple)', rare: 'var(--accent-blue)', common: 'var(--text-muted)' }; container.innerHTML = items.map(function(item) { const owned = inventory[category].includes(item.id); return '<div class="marketplace-item" style="'+(owned ? 'border-color: var(--accent-green); opacity: 0.7;' : '')+'" onclick="'+(owned ? '' : "buyItem('"+category+"', '"+item.id+"', "+item.price+", '"+item.name+"')")+'"><div class="item-icon-wrap">'+item.icon+'</div><div class="item-rarity '+item.rarity+'">'+item.rarity.toUpperCase()+'</div><div class="item-name">'+item.name+'</div><div class="item-desc">'+item.desc+'</div><div class="item-price">'+item.price.toLocaleString()+' POND</div><button class="item-buy-btn '+(owned ? 'owned' : '')+'">'+(owned ? '✓ OWNED' : 'BUY NOW')+'</button></div>'; }).join(''); }
+        
+        async function buyItem(category, itemId, price, name) { if (!wallet) { showCustomModal('⚠️', 'Connect wallet first'); return; } if (inventory[category].includes(itemId)) return; if (balance < price) { showCustomModal('⚠️ Insufficient POND', 'Need '+price.toLocaleString()+' POND', [{text: 'Buy POND', onClick: function() { switchTab('buy'); }}, {text: 'Cancel'}]); return; } const confirmed = await showCustomModal('💰 Confirm Purchase', 'Buy '+name+' for '+price.toLocaleString()+' POND?', [{text: 'Purchase'}, {text: 'Cancel'}]); if (confirmed) { balance -= price; document.getElementById('walletBalBanner').textContent = Math.floor(balance).toLocaleString(); inventory[category].push(itemId); localStorage.setItem('bakeInventory', JSON.stringify(inventory)); addHistoryEntry('Bought '+name, price, 'burn'); showCustomModal('✅ Purchase Successful!', name+' is now yours!'); showCategory(category); } }
+        
+        function switchTab(tab) { document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); }); document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); }); document.querySelector('[onclick="switchTab(\''+tab+'\')"]').classList.add('active'); document.getElementById(tab + 'Tab').classList.add('active'); if (tab === 'leaderboard') updateLeaderboardDisplay(); if (tab === 'marketplace') showCategory('tacticals'); if (tab === 'pool' && !wallet) loadPoolDataWithoutWallet(); }
+        
+        async function loadPoolDataWithoutWallet() { try { const tempProvider = new ethers.providers.JsonRpcProvider(SONGBIRD_RPC); const tempPoolContract = new ethers.Contract(CONTRACTS.POOL_CONTRACT, ["function reserveSGB() view returns (uint256)", "function reservePOND() view returns (uint256)"], tempProvider); const wsgbReserve = await tempPoolContract.reserveSGB(); const pondReserve = await tempPoolContract.reservePOND(); const wsgbAmount = parseFloat(ethers.utils.formatEther(wsgbReserve)); const pondAmount = parseFloat(ethers.utils.formatEther(pondReserve)); 
+            document.getElementById('poolWsgb').textContent = wsgbAmount.toFixed(2);
+            document.getElementById('poolBake').textContent = Math.floor(pondAmount).toLocaleString();
+            if (wsgbAmount > 0 && pondAmount > 0) { const price = wsgbAmount / pondAmount; 
+                document.getElementById('pondPrice').textContent = price.toFixed(6);
+                const priceUSD = price * sgbPriceUSD; 
+                document.getElementById('pondPriceUSD').textContent = priceUSD.toFixed(6);
+                const marketCap = priceUSD * 11900000000; 
+                document.getElementById('marketCap').textContent = marketCap.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0});
+                document.getElementById('marketcapLP').textContent = marketCap.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0}); 
+                const priceChange = ((price - 0.000003112356) / 0.000003112356) * 100;
+                const changeEl = document.getElementById('allTimeChange');
+                const changePercentEl = document.getElementById('priceChangePercent');
+                changeEl.textContent = 'All-Time: ' + (priceChange >= 0 ? '+' : '') + priceChange.toFixed(2) + '%';
+                changeEl.style.color = priceChange >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+                changePercentEl.textContent = (priceChange >= 0 ? '+' : '') + priceChange.toFixed(2);
+            } } catch (e) { console.log('Could not load pool data:', e); } }
+        
+        window.addEventListener('load', async function() { await fetchSGBPrice(); updateHistoryTable(); updateLeaderboardDisplay(); updateCreditsDisplay(); loadPoolDataWithoutWallet(); 
             
-            try {
-                const lockTier = parseInt(document.getElementById('lockTierSelect').value);
-                const confirmed = await showCustomModal('💧 Add Liquidity', `Add ${sgbAmount} SGB + ${Math.floor(pondAmount).toLocaleString()} POND?`, [{text: 'Confirm'}, {text: 'Cancel'}]);
-                if (!confirmed) return;
-                
-                showCustomModal('⏳ Approving POND...', 'Check MetaMask');
-                const pondWei = ethers.utils.parseEther(pondAmount.toString());
-                const approveTx = await pondContract.approve(CONTRACTS.POOL_CONTRACT, pondWei);
-                await approveTx.wait();
-                
-                showCustomModal('⏳ Adding Liquidity...', 'Check MetaMask');
-                const sgbWei = ethers.utils.parseEther(sgbAmount.toString());
-                const tx = await poolContract.addLiquidity(pondWei, lockTier, { value: sgbWei });
-                await tx.wait();
-                
-                await showCustomModal('✅ Liquidity Added', 'Your position is now active');
-                await updatePoolData();
-                await updateLPDashboard();
-                
-                const newSgbBalance = await provider.getBalance(wallet);
-                sgbBalance = parseFloat(ethers.utils.formatEther(newSgbBalance));
-                document.getElementById('walletSGBBanner').textContent = sgbBalance.toFixed(2);
-                
-                const newPondBalance = await pondContract.balanceOf(wallet);
-                balance = parseFloat(ethers.utils.formatEther(newPondBalance));
-                document.getElementById('walletBalBanner').textContent = Math.floor(balance).toLocaleString();
-                
-            } catch (e) {
-                showCustomModal('❌ Failed', e.message);
-            }
-        }
-
-        async function claimPondRewards() {
-            if (!wallet) return;
-            try {
-                showCustomModal('⏳ Claiming POND...', 'Check MetaMask');
-                const tx = await poolContract.claimPondRewards();
-                await tx.wait();
-                await showCustomModal('✅ POND Claimed', 'Rewards added to your wallet');
-                await updateLPDashboard();
-            } catch (e) {
-                showCustomModal('❌ Failed', e.message);
-            }
-        }
-
-        async function claimSgbRewards() {
-            if (!wallet) return;
-            try {
-                showCustomModal('⏳ Claiming SGB...', 'Check MetaMask');
-                const tx = await poolContract.claimSgbRewards();
-                await tx.wait();
-                await showCustomModal('✅ SGB Claimed', 'Rewards added to your wallet');
-                await updateLPDashboard();
-            } catch (e) {
-                showCustomModal('❌ Failed', e.message);
-            }
-        }
-
-        async function relockPosition(tier) {
-            if (!wallet) return;
-            try {
-                const tiers = ['30 days', '90 days', '180 days'];
-                const confirmed = await showCustomModal('🔒 Relock Position', `Lock for ${tiers[tier]}?`, [{text: 'Confirm'}, {text: 'Cancel'}]);
-                if (!confirmed) return;
-                showCustomModal('⏳ Relocking...', 'Check MetaMask');
-                const tx = await poolContract.relockPosition(tier);
-                await tx.wait();
-                await showCustomModal('✅ Position Relocked', `Locked for ${tiers[tier]}`);
-                await updateLPDashboard();
-            } catch (e) {
-                showCustomModal('❌ Failed', e.message);
-            }
-        }
-
-        async function removeLiquidity() {
-            if (!wallet) return;
-            try {
-                const confirmed = await showCustomModal('⚠️ Withdraw Liquidity', 'Remove all your liquidity?', [{text: 'Withdraw'}, {text: 'Cancel'}]);
-                if (!confirmed) return;
-                showCustomModal('⏳ Withdrawing...', 'Check MetaMask');
-                const tx = await poolContract.removeLiquidity();
-                await tx.wait();
-                await showCustomModal('✅ Liquidity Removed', 'Funds returned to your wallet');
-                await updatePoolData();
-                await updateLPDashboard();
-            } catch (e) {
-                showCustomModal('❌ Failed', e.message);
-            }
-        }
-
-        async function executeSwap() {
-            if (!wallet) { showCustomModal('⚠️', 'Connect wallet first'); return; }
-            const fromAmount = parseFloat(document.getElementById('swapFromAmount').value);
-            const fromToken = document.getElementById('swapFromToken').value;
-            if (!fromAmount || fromAmount <= 0) { showCustomModal('⚠️', 'Enter amount'); return; }
-            
-            try {
-                const confirmed = await showCustomModal('🔄 Confirm Swap', `Swap ${fromAmount} ${fromToken}?`, [{text: 'Swap'}, {text: 'Cancel'}]);
-                if (!confirmed) return;
-                
-                if (fromToken === 'SGB') {
-                    showCustomModal('⏳ Swapping...', 'Check MetaMask');
-                    const tx = await poolContract.swapSgbForPond({ value: ethers.utils.parseEther(fromAmount.toString()) });
-                    await tx.wait();
-                } else {
-                    showCustomModal('⏳ Approving...', 'Check MetaMask');
-                    const pondWei = ethers.utils.parseEther(fromAmount.toString());
-                    const approveTx = await pondContract.approve(CONTRACTS.POOL_CONTRACT, pondWei);
-                    await approveTx.wait();
-                    showCustomModal('⏳ Swapping...', 'Check MetaMask');
-                    const tx = await poolContract.swapPondForSgb(pondWei);
-                    await tx.wait();
-                }
-                
-                await showCustomModal('✅ Swap Complete', 'Check your wallet');
-                await updatePoolData();
-                
-                const newSgbBalance = await provider.getBalance(wallet);
-                sgbBalance = parseFloat(ethers.utils.formatEther(newSgbBalance));
-                document.getElementById('walletSGBBanner').textContent = sgbBalance.toFixed(2);
-                
-                const newPondBalance = await pondContract.balanceOf(wallet);
-                balance = parseFloat(ethers.utils.formatEther(newPondBalance));
-                document.getElementById('walletBalBanner').textContent = Math.floor(balance).toLocaleString();
-                
-            } catch (e) {
-                showCustomModal('❌ Failed', e.message);
-            }
-        }
-
-        function toggleFirstDepositor() {
-            const isFirst = document.getElementById('isFirstDepositor').checked;
-            const bakeInput = document.getElementById('bakeRequired');
-            if (isFirst) {
-                bakeInput.readOnly = false;
-                bakeInput.style.color = 'var(--text-primary)';
-                bakeInput.value = '';
-            } else {
-                bakeInput.readOnly = true;
-                bakeInput.style.color = 'var(--accent-gold)';
-                document.getElementById('wsgbInput').dispatchEvent(new Event('input'));
-            }
-        }
-
-        // ==================== GAME FLOW ====================
-        function selectVehicle() {
-            if (gameCredits < 1) {
-                showCustomModal('⚠️ No Credits', 'Buy credits to play');
-                return;
-            }
-            document.getElementById('gameSetup').style.display = 'none';
-            document.getElementById('vehicleSelect').style.display = 'block';
-        }
-
-        function selectVehicleType(icon, hp, dmg) {
-            selectedVehicle = { icon, hp, dmg };
-            document.getElementById('vehicleSelect').style.display = 'none';
-            showMarketplaceUpsell();
-        }
-
-        function showMarketplaceUpsell() {
-            const unownedTacticals = MARKETPLACE.tacticals.filter(t => !inventory.tacticals.includes(t.id)).slice(0, 3);
-            const container = document.getElementById('upsellItems');
-            
-            if (unownedTacticals.length === 0) {
-                proceedToGame();
-                return;
-            }
-            
-            container.innerHTML = unownedTacticals.map(item => `
-                <div class="marketplace-item" onclick="buyItem('tacticals', '${item.id}', ${item.price}, '${item.name}')">
-                    <div class="item-icon-wrap">${item.icon}</div>
-                    <div class="item-rarity ${item.rarity}">${item.rarity.toUpperCase()}</div>
-                    <div class="item-name">${item.name}</div>
-                    <div class="item-desc">${item.desc}</div>
-                    <div class="item-price">${item.price.toLocaleString()} POND</div>
-                    <button class="item-buy-btn">BUY NOW</button>
-                </div>
-            `).join('');
-            
-            document.getElementById('marketplaceUpsell').style.display = 'block';
-        }
-
-        function proceedToGame() {
-            document.getElementById('marketplaceUpsell').style.display = 'none';
-            gameCredits--;
-            updateCreditsDisplay();
-            startGame();
-        }
-
-        function startGame() {
-            document.getElementById('gameArea').style.display = 'block';
-            document.getElementById('playerName').textContent = document.getElementById('username').value || 'Player';
-            document.getElementById('playerMaxHP').textContent = selectedVehicle.hp;
-            document.getElementById('playerHP').textContent = selectedVehicle.hp;
-            // Game initialization would go here
-            showSarahMessage('start');
-        }
-
-        function showSarahMessage(type) {
-            const messages = {
-                start: ['Good luck out there! 💕', 'Show them what you got! 🔥', 'Time to dominate! 👑'],
-                kill: ['Nice one! 🎯', 'Boom! 💥', 'Get rekt! 😈'],
-                death: ['Ouch... 😢', 'You got this! 💪', 'Shake it off! 🌟']
-            };
-            const arr = messages[type] || messages.start;
-            document.getElementById('sarahText').textContent = arr[Math.floor(Math.random() * arr.length)];
-        }
-
-        // ==================== TABS ====================
-        function switchTab(tab) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
-            document.getElementById(tab + 'Tab').classList.add('active');
-            
-            if (tab === 'leaderboard') updateLeaderboardDisplay();
-            if (tab === 'marketplace') showCategory('tacticals');
-            if (tab === 'pool' && !wallet) loadPoolDataWithoutWallet();
-        }
-
-        // ==================== MARKETPLACE ====================
-        function showCategory(category) {
-            document.querySelectorAll('.category-tab-btn').forEach(btn => btn.classList.remove('active'));
-            if (event && event.target) event.target.classList.add('active');
-            
-            const items = MARKETPLACE[category];
-            const container = document.getElementById('marketplaceItems');
-            
-            container.innerHTML = items.map(item => {
-                const owned = inventory[category].includes(item.id);
-                return `
-                    <div class="marketplace-item ${owned ? 'owned' : ''}" onclick="${owned ? '' : `buyItem('${category}', '${item.id}', ${item.price}, '${item.name}')`}">
-                        <div class="item-icon-wrap">${item.icon}</div>
-                        <div class="item-rarity ${item.rarity}">${item.rarity.toUpperCase()}</div>
-                        <div class="item-name">${item.name}</div>
-                        <div class="item-desc">${item.desc}</div>
-                        <div class="item-price">${item.price.toLocaleString()} POND</div>
-                        <button class="item-buy-btn ${owned ? 'owned' : ''}">${owned ? '✓ OWNED' : 'BUY NOW'}</button>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        async function buyItem(category, itemId, price, name) {
-            if (!wallet) { showCustomModal('⚠️', 'Connect wallet first'); return; }
-            if (inventory[category].includes(itemId)) return;
-            if (balance < price) {
-                showCustomModal('⚠️ Insufficient POND', 'Need ' + price.toLocaleString() + ' POND', [{text: 'Buy POND', onClick: () => switchTab('buy')}, {text: 'Cancel'}]);
-                return;
-            }
-            
-            const confirmed = await showCustomModal('💰 Confirm Purchase', 'Buy ' + name + ' for ' + price.toLocaleString() + ' POND?', [{text: 'Purchase'}, {text: 'Cancel'}]);
-            if (confirmed) {
-                balance -= price;
-                document.getElementById('walletBalBanner').textContent = Math.floor(balance).toLocaleString();
-                inventory[category].push(itemId);
-                localStorage.setItem('bakeInventory', JSON.stringify(inventory));
-                addHistoryEntry('Bought ' + name, price, 'burn');
-                showCustomModal('✅ Purchase Successful', name + ' is now yours!');
-                showCategory(category);
-            }
-        }
-
-        // ==================== PACKAGES ====================
-        async function buyPackage(usdAmount, discountPercent) {
-            if (!wallet) { showCustomModal('⚠️', 'Connect wallet first'); return; }
-            
-            const sgbNeeded = usdAmount / sgbPriceUSD;
-            if (sgbBalance < sgbNeeded) {
-                showCustomModal('⚠️ Insufficient SGB', `Need ~${Math.ceil(sgbNeeded).toLocaleString()} SGB`);
-                return;
-            }
-            
-            const poolWsgb = parseFloat(document.getElementById('poolWsgb').textContent.replace(/,/g, '')) || 1;
-            const poolBake = parseFloat(document.getElementById('poolBake').textContent.replace(/,/g, '')) || 1;
-            const rate = poolBake / poolWsgb;
-            const basePond = sgbNeeded * rate;
-            const bonusPond = basePond * (discountPercent / 100);
-            const totalPond = basePond + bonusPond;
-            
-            const confirmed = await showCustomModal('💰 Buy Package', `Pay ~${Math.ceil(sgbNeeded).toLocaleString()} SGB\nReceive ~${Math.floor(totalPond).toLocaleString()} POND (+${discountPercent}%)`, [{text: 'Buy Package'}, {text: 'Cancel'}]);
-            if (!confirmed) return;
-            
-            try {
-                showCustomModal('⏳ Processing...', 'Check MetaMask');
-                const tx = await poolContract.swapSgbForPond({ value: ethers.utils.parseEther(sgbNeeded.toFixed(6)) });
-                await tx.wait();
-                
-                await showCustomModal('✅ Package Purchased', `You received ~${Math.floor(totalPond).toLocaleString()} POND!`);
-                
-                const newSgbBalance = await provider.getBalance(wallet);
-                sgbBalance = parseFloat(ethers.utils.formatEther(newSgbBalance));
-                document.getElementById('walletSGBBanner').textContent = sgbBalance.toFixed(2);
-                
-                const newPondBalance = await pondContract.balanceOf(wallet);
-                balance = parseFloat(ethers.utils.formatEther(newPondBalance));
-                document.getElementById('walletBalBanner').textContent = Math.floor(balance).toLocaleString();
-                
-                addHistoryEntry(`Bought $${usdAmount} Package`, totalPond, 'buy');
-                
-            } catch (e) {
-                showCustomModal('❌ Failed', e.message);
-            }
-        }
-
-        async function claimBulkBAKE() {
-            showCustomModal('⚠️', 'No vested POND to claim');
-        }
-
-        // ==================== HISTORY & LEADERBOARD ====================
-        function addHistoryEntry(action, amount, type) {
-            userHistory.unshift({
-                date: new Date().toLocaleString(),
-                action: action,
-                amount: amount,
-                type: type
-            });
-            if (userHistory.length > 50) userHistory.pop();
-            localStorage.setItem('bakeHistory', JSON.stringify(userHistory));
-            updateHistoryTable();
-        }
-
-        function updateHistoryTable() {
-            const tbody = document.getElementById('historyTableBody');
-            if (userHistory.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" class="text-center" style="color: var(--text-muted); padding: 24px;">No history yet.</td></tr>';
-                return;
-            }
-            
-            const typeColors = {
-                earn: 'var(--accent-green)',
-                burn: 'var(--accent-red)',
-                buy: 'var(--accent-gold)',
-                sell: 'var(--accent-purple)'
-            };
-            
-            tbody.innerHTML = userHistory.slice(0, 20).map(entry => `
-                <tr>
-                    <td style="color: var(--text-muted);">${entry.date}</td>
-                    <td>${entry.action}</td>
-                    <td class="text-right" style="color: ${typeColors[entry.type] || 'var(--text-primary)'}; font-weight: 600;">${typeof entry.amount === 'number' ? entry.amount.toLocaleString() : entry.amount}</td>
-                    <td class="text-center"><span style="background: ${typeColors[entry.type]}22; color: ${typeColors[entry.type]}; padding: 4px 10px; border-radius: 4px; font-size: 11px; text-transform: uppercase;">${entry.type}</span></td>
-                </tr>
-            `).join('');
-        }
-
-        function updateLeaderboardDisplay() {
-            const container = document.getElementById('leaderboardList');
-            if (leaderboard.length === 0) {
-                container.innerHTML = '<div class="text-center" style="padding: 40px; color: var(--text-muted);">No games played yet. Be the first!</div>';
-                return;
-            }
-            
-            container.innerHTML = leaderboard.slice(0, 10).map((entry, i) => {
-                const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : '#' + (i + 1);
-                return `
-                    <div class="leaderboard-entry ${i < 3 ? 'top' : ''}">
-                        <span class="leaderboard-rank">${medal}</span>
-                        <span class="leaderboard-name">${entry.name}</span>
-                        <span class="leaderboard-score">${entry.bake.toLocaleString()} POND</span>
-                        <span class="leaderboard-kills">${entry.kills} kills</span>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // ==================== SGB PRICE ====================
-        async function fetchSGBPrice() {
-            try {
-                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=songbird&vs_currencies=usd');
-                const data = await response.json();
-                if (data.songbird && data.songbird.usd) {
-                    sgbPriceUSD = data.songbird.usd;
-                }
-            } catch (e) {
-                console.log('Price fetch error:', e);
-            }
-        }
-
-        // ==================== INITIALIZATION ====================
-        window.addEventListener('load', async function() {
-            await fetchSGBPrice();
-            updateHistoryTable();
-            updateLeaderboardDisplay();
-            updateCreditsDisplay();
-            loadPoolDataWithoutWallet();
-            
-            // Refresh data periodically
             setInterval(async function() {
                 if (wallet) {
                     await updatePoolData();
@@ -1231,55 +585,7 @@
                 }
             }, 10000);
             
-            // WSGB input listener for auto-calculating POND
-            const wsgbInput = document.getElementById('wsgbInput');
-            if (wsgbInput) {
-                wsgbInput.addEventListener('input', function() {
-                    const wsgbAmount = parseFloat(this.value) || 0;
-                    const poolWsgb = parseFloat(document.getElementById('poolWsgb').textContent.replace(/,/g, '')) || 0;
-                    const poolBake = parseFloat(document.getElementById('poolBake').textContent.replace(/,/g, '')) || 0;
-                    const isFirst = document.getElementById('isFirstDepositor') && document.getElementById('isFirstDepositor').checked;
-                    
-                    if (wsgbAmount > 0 && poolWsgb > 0 && poolBake > 0 && !isFirst) {
-                        const currentRatio = poolBake / poolWsgb;
-                        const bakeAt05x = wsgbAmount * currentRatio * 0.5;
-                        document.getElementById('bakeRequired').value = bakeAt05x.toFixed(2);
-                    } else if (isFirst) {
-                        document.getElementById('bakeRequired').value = '';
-                    }
-                });
-            }
-            
-            // Swap estimate listener
-            const swapFromAmount = document.getElementById('swapFromAmount');
-            const swapFromToken = document.getElementById('swapFromToken');
-            
-            function updateSwapEstimate() {
-                const fromAmount = parseFloat(swapFromAmount.value) || 0;
-                const fromToken = swapFromToken.value;
-                
-                if (fromAmount > 0) {
-                    const poolWsgb = parseFloat(document.getElementById('poolWsgb').textContent.replace(/,/g, '')) || 100000;
-                    const poolBake = parseFloat(document.getElementById('poolBake').textContent.replace(/,/g, '')) || 3846154;
-                    let toAmount = 0;
-                    
-                    if (fromToken === 'SGB') {
-                        toAmount = poolBake - (poolWsgb * poolBake) / (poolWsgb + fromAmount);
-                    } else {
-                        toAmount = poolWsgb - (poolWsgb * poolBake) / (poolBake + fromAmount);
-                    }
-                    
-                    document.getElementById('swapToAmount').value = toAmount.toFixed(6);
-                } else {
-                    document.getElementById('swapToAmount').value = '';
-                }
-            }
-            
-            if (swapFromAmount) {
-                swapFromAmount.addEventListener('input', updateSwapEstimate);
-                swapFromToken.addEventListener('change', updateSwapEstimate);
-            }
-        });
+            const wsgbInput = document.getElementById('wsgbInput'); if (wsgbInput) { wsgbInput.addEventListener('input', function() { const wsgbAmount = parseFloat(this.value) || 0; const poolWsgb = parseFloat(document.getElementById('poolWsgb').textContent.replace(/,/g, '')) || 0; const poolBake = parseFloat(document.getElementById('poolBake').textContent.replace(/,/g, '')) || 0; const isFirst = document.getElementById('isFirstDepositor') && document.getElementById('isFirstDepositor').checked; if (wsgbAmount > 0 && poolWsgb > 0 && poolBake > 0 && !isFirst) { const currentRatio = poolBake / poolWsgb; const bakeAt05x = wsgbAmount * currentRatio * 0.5; document.getElementById('bakeRequired').value = bakeAt05x.toFixed(2); } else if (isFirst) { document.getElementById('bakeRequired').value = ''; } }); } const swapFromAmount = document.getElementById('swapFromAmount'); const swapFromToken = document.getElementById('swapFromToken'); function updateSwapEstimate() { const fromAmount = parseFloat(swapFromAmount.value) || 0; const fromToken = swapFromToken.value; if (fromAmount > 0) { const poolWsgb = parseFloat(document.getElementById('poolWsgb').textContent.replace(/,/g, '')) || 100000; const poolBake = parseFloat(document.getElementById('poolBake').textContent.replace(/,/g, '')) || 3846154; let toAmount = 0; if (fromToken === 'SGB') { toAmount = poolBake - (poolWsgb * poolBake) / (poolWsgb + fromAmount); } else { toAmount = poolWsgb - (poolWsgb * poolBake) / (poolBake + fromAmount); } document.getElementById('swapToAmount').value = toAmount.toFixed(6); } else { document.getElementById('swapToAmount').value = ''; } } if (swapFromAmount) { swapFromAmount.addEventListener('input', updateSwapEstimate); swapFromToken.addEventListener('change', updateSwapEstimate); } });
     </script>
 </body>
 </html>
